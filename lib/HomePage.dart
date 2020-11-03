@@ -1,10 +1,10 @@
 
 
-import 'package:componentes/src/pages/alert_page.dart';
+// import 'package:componentes/src/pages/alert_page.dart';
 // import 'package:componentes/src/pages/avatar_page.dart';
-import 'package:componentes/src/routes/routes.dart';
+// import 'package:componentes/src/routes/routes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+// import 'package:flutter_localizations/flutter_localizations.dart';
 
 // import 'package:componentes/src/pages/home_page.dart';
 //import 'package:componentes/src/pages/home_temp.dart';
@@ -20,9 +20,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       localizationsDelegates: [
    // ... app-specific localization delegate[s] here
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
+        // GlobalMaterialLocalizations.delegate,
+        // GlobalWidgetsLocalizations.delegate,
+        // GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: [
         const Locale('en', 'US'), // English, no country code
@@ -31,11 +31,11 @@ class MyApp extends StatelessWidget {
 
       // home: HomePage(),
       initialRoute: '/',
-      routes: getApplicationRoutes(),
+      // routes: getApplicationRoutes(),
       onGenerateRoute: (RouteSettings settings){
         print ('Ruta llamada: ${settings.name}');
         return MaterialPageRoute(
-          builder: (BuildContext context )=> AlertPAge()
+          // builder: (BuildContext context )=> AlertPAge()
         );
       },
       );
