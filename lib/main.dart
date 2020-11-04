@@ -13,11 +13,9 @@ class MyApp extends StatelessWidget
   {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Netjob pry',
       theme: ThemeData(
-        
         primarySwatch: Colors.blue,
-        //pruebade comentariopjhvjvjh
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: HomeScreen(),
