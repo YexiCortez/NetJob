@@ -38,7 +38,41 @@ class RegistroScreen extends StatelessWidget {
               hintText: "Confirmar Correo",
               onChanged: (value){},
             ),
+          
+          Container
+          (
+            height:60,
+            margin:EdgeInsets.fromLTRB (10,30,10,40),
+            child: Row
+            (
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: const <Widget>[
+                  Image(image:AssetImage('assets/img/facebook.png')),
+                  //SizedBox(width:4),
+                  Image(image:AssetImage('assets/img/google-mas.png')),
+                  //SizedBox(width:4),
+                  Image(image:AssetImage('assets/img/linkedin.png')),
+                ],
+            )
+          ),
+          SizedBox( width:10,),
+          ButtonTheme
+          (
+            //padding: EdgeInsets.all(8.0),
+            minWidth: MediaQuery.of(context).size.width*0.8,
+            height: 40,
 
+                      child: RaisedButton
+                      (
+                        onPressed: (){},
+                        color: Colors.blue,
+                        shape: RoundedRectangleBorder
+                        (
+                          borderRadius:BorderRadius.circular(20)
+                          
+                        ),
+                      child: Text('Registrarme',style: TextStyle(color: Colors.black,fontSize: 22),),),
+          ),
         ]
       )
     );

@@ -6,7 +6,7 @@ class RegisBoxtitle extends StatelessWidget {
   final String hintText;
   final ValueChanged<String> onChanged;
   const RegisBoxtitle({
-    Key key, this.hintText, this.onChanged,
+    Key key, this.hintText, this.onChanged, InputDecoration decoration,
   }) : super(key: key);
 
   @override
