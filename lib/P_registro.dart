@@ -1,60 +1,48 @@
 import 'package:flutter/material.dart';
 
+import 'package:proyecto/P_registro/PasswordBox.dart';
+import 'package:proyecto/P_registro/Regisboxtitle.dart';
+import 'package:proyecto/P_registro/containers.dart';
+
 class RegistroScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
     return Scaffold
     (
-      appBar: AppBar(  title: Text('hola') ),
-
-      
       body : Column 
       (
-        //holalasldlas
         children: <Widget>
         [
           // aqui debe ir el logo 
-          Container
-          (
-            height: 200,
-            width: 200,
-          ),
 
-            Positioned
+          Container
+          ( 
+            padding: EdgeInsets.fromLTRB(0,10,10,0),
+            child: Image.asset('assets/img/Netjob-logoicono.png',height: 270,width: 300,), 
+          ),
+          //inicio de recuadros de llenado
+            RegisBoxtitle
             (
-              bottom:0,
-              left: 0,
-              right: 0,
-              child: Container
-              (
-                margin: EdgeInsets.symmetric(horizontal: 20.0),
-                height: 54,
-                decoration: BoxDecoration
-                (
-                  color: Colors.white,
-                  borderRadius:  BorderRadius.circular(20), 
-                  border:Border.all
-                  (
-                    //osdkaoskdoaasda
-                    color: Colors.lightBlueAccent,
-                    width: 4,
-                  ),
-                  boxShadow:
-                  [
-                    BoxShadow
-                    (
-                      offset: Offset(0,10),
-                      blurRadius: 50,
-                      color: Colors.black.withOpacity(0.23),
-                    )
-                  ]
-                  
-                ),
-              ),
+              hintText: "Nombre de Usuario",
+              onChanged: (value){},
             ),
+            PasswordBox(),
+            RegisBoxtitle
+            (
+              hintText: "Correo Electrónico",
+              onChanged: (value){},
+            ),
+            RegisBoxtitle
+            (
+              hintText: "Confirmar Correo",
+              onChanged: (value){},
+            ),
+
         ]
       )
     );
   }
 }
+
+
