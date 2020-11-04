@@ -36,6 +36,7 @@ class RegistroScreen extends StatelessWidget {
                   borderRadius:  BorderRadius.circular(20), 
                   border:Border.all
                   (
+                    //osdkaoskdoaasda
                     color: Colors.lightBlueAccent,
                     width: 4,
                   ),
