@@ -8,6 +8,7 @@ class RegistroScreen extends StatelessWidget {
     (
       body : Column 
       (
+        //holalasldlas
         children: <Widget>
         [
           Container
