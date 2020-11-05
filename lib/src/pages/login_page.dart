@@ -287,7 +287,7 @@ Widget _buildSignupBtn() {
               ),
             ),
             TextSpan(
-              text: 'Sign Up',
+              text: 'Registrese',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18.0,
