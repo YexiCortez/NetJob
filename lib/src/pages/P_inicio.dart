@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proyecto/src/pages/inicio_usuario.dart';
 
 class InicioScreen extends StatelessWidget {
   const InicioScreen({Key key}) : super(key: key);
@@ -38,7 +39,8 @@ class InicioScreen extends StatelessWidget {
                     padding:EdgeInsets.symmetric(horizontal: 40.0,vertical: 15),
                     shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(25)),
                     color: Colors.lightBlueAccent,
-                    onPressed: (){},child: Text("CONTRATAR"),),
+                    onPressed: ()=>{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>InicioUsuario()))},
+                    child: Text("CONTRATAR"),),
 
                     SizedBox(width:30,),
                   //cambiop
