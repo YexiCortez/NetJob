@@ -8,8 +8,27 @@ class InicioProveedor extends StatelessWidget {
         title: Text('Inicio'),
       ),
       body: Stack(
-        children: <Widget>[
-          _buildAppLogo()
+        children: <Widget>[          
+          Center(
+            child: Column(
+              children: [
+                SizedBox(height: 10.0),
+                Positioned(
+                      top: 85.0,
+                      left: 110.0,
+                      child: _buildAppLogo(),
+                      ),
+                SizedBox(height: 30.0),
+                Text('¡Gracias por confiar en nosotros!',
+                style: TextStyle(
+                                fontFamily: 'OpenSans',
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.bold),
+                    ),
+
+              ],
+            ),
+          )
         ],
       ),
     );
@@ -18,8 +37,8 @@ class InicioProveedor extends StatelessWidget {
 
   Widget _buildAppLogo(){
   return Container(
-    width: 175.0,
-    height: 175.0,
+    width: 200.0,
+    height: 200.0,
     decoration: BoxDecoration(
       image: DecorationImage(
         fit: BoxFit.fill,
