@@ -15,8 +15,6 @@ class RegistroScreen extends StatelessWidget {
       (
         children: <Widget>
         [
-          // aqui debe ir el logo 
-
           Container
           ( 
             
