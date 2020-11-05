@@ -10,6 +10,7 @@ class RegistroScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold
     (
+      resizeToAvoidBottomPadding: false,
       body : Column 
       (
         children: <Widget>
@@ -18,6 +19,7 @@ class RegistroScreen extends StatelessWidget {
 
           Container
           ( 
+            
             //padding: EdgeInsets.fromLTRB(0,10,10,0),
             child: Image.asset('assets/img/Netjob-logoicono.png',width: 275.0,
             height: 275.0,), 
