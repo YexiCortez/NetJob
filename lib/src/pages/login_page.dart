@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:proyecto/src/pages/P_inicio.dart';
+import 'package:proyecto/src/pages/P_registro.dart';
 import 'dart:ui';
 
 import 'package:proyecto/utilities/constants.dart';
@@ -181,7 +183,9 @@ Widget _buildLoginBtn() {
       width: double.infinity,
       child: RaisedButton(
         elevation: 5.0,
-        onPressed: () => print('Login Button Pressed'),
+        onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(builder:(context)=>InicioScreen()));
+        }, //=> print('Login Button Pressed'),
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
@@ -273,7 +277,6 @@ Widget _buildSignupBtn() {
       
       onTap: ()=> print('Sign Up Button Pressed'),
       child: RichText(
-        
         text: TextSpan(
           children: [
             TextSpan(
@@ -285,6 +288,7 @@ Widget _buildSignupBtn() {
               ),
             ),
             TextSpan(
+
               text: 'Registrese',
               style: TextStyle(
                 color: Colors.white,

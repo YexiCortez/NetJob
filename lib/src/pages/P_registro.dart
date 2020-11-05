@@ -18,8 +18,9 @@ class RegistroScreen extends StatelessWidget {
 
           Container
           ( 
-            padding: EdgeInsets.fromLTRB(0,10,10,0),
-            child: Image.asset('assets/img/Netjob-logoicono.png',height: 270,width: 300,), 
+            //padding: EdgeInsets.fromLTRB(0,10,10,0),
+            child: Image.asset('assets/img/Netjob-logoicono.png',width: 175.0,
+            height: 175.0,), 
           ),
           //inicio de recuadros de llenado
             RegisBoxtitle
@@ -49,7 +50,7 @@ class RegistroScreen extends StatelessWidget {
                 children: const <Widget>[
                   Image(image:AssetImage('assets/img/facebook.png')),
                   //SizedBox(width:4),
-                  Image(image:AssetImage('assets/img/google-mas.png')),
+                  Image(image:AssetImage('assets/img/google.jpg')),
                   //SizedBox(width:4),
                   Image(image:AssetImage('assets/img/linkedin.png')),
                 ],
@@ -64,7 +65,9 @@ class RegistroScreen extends StatelessWidget {
 
                       child: RaisedButton
                       (
-                        onPressed: (){},
+                        onPressed: (){
+                          Navigator.of(context).pop();
+                        },
                         color: Colors.blue,
                         shape: RoundedRectangleBorder
                         (
