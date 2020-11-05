@@ -19,7 +19,7 @@ Widget build(BuildContext context) {
     body: AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.light,
       child: GestureDetector(
-        onTap: (){},
+        onTap: ()=> FocusScope.of(context).unfocus(),
         child: Stack(
           children: <Widget>[
             Container(
@@ -30,11 +30,22 @@ Widget build(BuildContext context) {
               ),
             ),
             Container(
+              child: Stack(
+                children: [
+                  _builImgFondo(),
+                  Positioned(
+                    top: 150.0,
+                    left: 120.0,
+                    child: _buildAppLogo(),), 
+                ],
+              ),
+            ),
+            Container(  
               height: double.infinity,
               padding: EdgeInsets.symmetric(horizontal: 40.0,),
                 child: Column(
                   children: <Widget>[
-                    Padding(padding: EdgeInsets.only(top: 270.0)),
+                    Padding(padding: EdgeInsets.only(top: 320.0)),
                     Text(
                       'Inicia Sesión',
                         style: TextStyle(
@@ -76,7 +87,7 @@ Widget build(BuildContext context) {
         Container(
           alignment: Alignment.centerLeft,
           decoration: kBoxDecorationStyle,
-          height: 60.0,
+          height: 40.0,
           child: TextField(
             keyboardType: TextInputType.emailAddress,
             style: TextStyle(
@@ -85,7 +96,7 @@ Widget build(BuildContext context) {
             ),
             decoration: InputDecoration(
               border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
+              contentPadding: EdgeInsets.only(top: 8.0),
               prefixIcon: Icon(Icons.email, color: Colors.white),
             hintText: 'Introduzca su correo electrónico o usuario',
             hintStyle: kHintTextStyle,
@@ -105,7 +116,7 @@ Widget _buildPassword(){
       Container(
         alignment: Alignment.centerLeft,
         decoration: kBoxDecorationStyle,
-        height: 60.0,
+        height: 40.0,
         child: TextField(
           obscureText: true,
           style: TextStyle(
@@ -114,7 +125,7 @@ Widget _buildPassword(){
           ),
           decoration: InputDecoration(
             border: InputBorder.none,
-            contentPadding: EdgeInsets.only(top: 14.0),
+            contentPadding: EdgeInsets.only(top: 8.0),
             prefixIcon: Icon(Icons.lock, color: Colors.white,),
             hintText: 'Introduzca su contraseña',
             hintStyle: kHintTextStyle
@@ -291,6 +302,30 @@ Widget _buildSignupBtn() {
     );
     
   }
+
+
+Widget _builImgFondo(){
+  return Image(
+    width: double.nan,
+    image: AssetImage('assets/img/FondoInicio.png'),
+    
+  );
+}
+
+
+Widget _buildAppLogo(){
+  return Container(
+    width: 175.0,
+    height: 175.0,
+    decoration: BoxDecoration(
+      image: DecorationImage(
+        fit: BoxFit.fill,
+        image: AssetImage('assets/img/Netjob-logoicono.png')),
+      shape: BoxShape.circle,
+    ),
+  );
+}
+
 
 }
 
