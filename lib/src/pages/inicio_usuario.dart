@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proyecto/src/pages/menu_izquierdo.dart';
 
 class InicioUsuario extends StatelessWidget {
   @override
@@ -7,6 +8,7 @@ class InicioUsuario extends StatelessWidget {
       appBar: AppBar(
         title: Text('Inicio'),
       ),
+      drawer: crearMenu(),
       body: Stack(
         children: <Widget>[          
           Center(
