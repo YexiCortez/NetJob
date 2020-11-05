@@ -81,11 +81,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             children: <Widget>[
               SizedBox(height: 100,),
               Align(
-                alignment: Alignment.topCenter,
-                child:Image.asset('assets/images/logo123.jpg',),
+                child: Image.asset('assets/img/Netjob-logoicono.png'),
               ),
               //Image.asset('assets/images/logo123.jpg',),
-               Align(
+              Align(
                 child: Text("¡Bienvenido!", 
                 textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.black, fontSize: 45, fontWeight: FontWeight.normal),),
