@@ -1,8 +1,10 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:ui';
 
 import 'package:proyecto/utilities/constants.dart';
+import 'package:proyecto/src/pages/P_registro.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -60,7 +62,7 @@ Widget build(BuildContext context) {
                             _buildLoginBtn(),
                             _buildSignInWithText(),
                             _buildSocialBtnRow(),
-                            _buildSignupBtn()
+                            _buildSignupBtn(),
                           ],
                         ),
                       ),
@@ -271,7 +273,8 @@ Widget _buildSocialBtnRow() {
 Widget _buildSignupBtn() {
     return GestureDetector(
       
-      onTap: ()=> print('Sign Up Button Pressed'),
+      onTap: (){},
+
       child: RichText(
         
         text: TextSpan(
@@ -300,6 +303,8 @@ Widget _buildSignupBtn() {
     );
     
   }
+
+
 
 
 Widget _builImgFondo(){
