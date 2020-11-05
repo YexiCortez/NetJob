@@ -19,8 +19,8 @@ class RegistroScreen extends StatelessWidget {
           Container
           ( 
             //padding: EdgeInsets.fromLTRB(0,10,10,0),
-            child: Image.asset('assets/img/Netjob-logoicono.png',width: 175.0,
-            height: 175.0,), 
+            child: Image.asset('assets/img/Netjob-logoicono.png',width: 275.0,
+            height: 275.0,), 
           ),
           //inicio de recuadros de llenado
             RegisBoxtitle
@@ -49,9 +49,7 @@ class RegistroScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: const <Widget>[
                   Image(image:AssetImage('assets/img/facebook.png')),
-                  //SizedBox(width:4),
                   Image(image:AssetImage('assets/img/google.jpg')),
-                  //SizedBox(width:4),
                   Image(image:AssetImage('assets/img/linkedin.png')),
                 ],
             )

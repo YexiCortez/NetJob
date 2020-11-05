@@ -277,7 +277,7 @@ Widget _buildSocialBtnRow() {
 Widget _buildSignupBtn() {
     return GestureDetector(
       
-      onTap: (){},
+      onTap: (){Navigator.of(context).push(MaterialPageRoute(builder:(context)=>RegistroScreen()));},
 
       child: RichText(
         text: TextSpan(

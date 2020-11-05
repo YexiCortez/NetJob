@@ -11,11 +11,50 @@ class InicioScreen extends StatelessWidget {
       (
         children: <Widget>
         [
-        Container
+          Container
           ( 
-            padding: EdgeInsets.fromLTRB(0,0,0,0),
-            child: Image.asset('assets/img/Netjob-logoicono.png',height: 270,width: 300,), 
+            padding: EdgeInsets.fromLTRB(8,75,0,0),
+            child: Image.asset('assets/img/Netjob-logoicono.png',height: 400,width: 400,), 
           ),
+          Container
+          ( 
+            child: Text("¿Qué necesitas?",
+              style: TextStyle
+              (
+              fontWeight: FontWeight.bold,
+              fontSize: 30,
+              ),
+            ),
+          ),
+          Container
+          (
+            child : Center 
+            (
+              child: Row(
+                children: <Widget>
+                [
+                  Padding(padding: EdgeInsets.symmetric(horizontal: 20.0,vertical: 100),),
+                  FlatButton(
+                    padding:EdgeInsets.symmetric(horizontal: 40.0,vertical: 15),
+                    shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(25)),
+                    color: Colors.lightBlueAccent,
+                    onPressed: (){},child: Text("CONTRATAR"),),
+
+                    SizedBox(width:30,),
+                  
+                  RaisedButton(
+                    padding:EdgeInsets.symmetric(horizontal: 40.0,vertical: 15),
+                    shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(25)),
+                    color: Colors.black,
+                    onPressed: (){}, 
+                    textColor: Colors.white,
+                    child: Text("TRABAJAR"))
+                ],
+              ),
+            )
+
+          ),
+
         ]
       ),
     );
