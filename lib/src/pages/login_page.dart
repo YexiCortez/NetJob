@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:proyecto/src/pages/P_inicio.dart';
 import 'package:proyecto/src/pages/P_registro.dart';
+import 'package:proyecto/src/pages/transicion_inicio.dart';
 import 'dart:ui';
 
 import 'package:proyecto/utilities/constants.dart';
@@ -186,7 +187,7 @@ Widget _buildLoginBtn() {
       child: RaisedButton(
         elevation: 5.0,
         onPressed: () {
-          Navigator.of(context).push(MaterialPageRoute(builder:(context)=>InicioScreen()));
+          Navigator.of(context).push(MaterialPageRoute(builder:(context)=>HomePage()));
         }, //=> print('Login Button Pressed'),
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
