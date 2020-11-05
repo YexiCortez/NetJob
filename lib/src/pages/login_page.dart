@@ -29,44 +29,42 @@ Widget build(BuildContext context) {
               color: Colors.lightBlue,
               ),
             ),
-            Container(
-              child: Stack(
+              Stack(
                 children: [
                   _builImgFondo(),
                   Positioned(
-                    top: 150.0,
+                    top: 135.0,
                     left: 120.0,
                     child: _buildAppLogo(),), 
-                ],
-              ),
-            ),
-            Container(  
-              height: double.infinity,
-              padding: EdgeInsets.symmetric(horizontal: 40.0,),
-                child: Column(
-                  children: <Widget>[
-                    Padding(padding: EdgeInsets.only(top: 320.0)),
-                    Text(
-                      'Inicia Sesión',
-                        style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'OpenSans',
-                        fontSize: 30.0,
-                        fontWeight: FontWeight.bold,
+                    Container(  
+                      height: double.infinity,
+                      padding: EdgeInsets.symmetric(horizontal: 40.0,),
+                        child: Column(
+                          children: <Widget>[
+                            Padding(padding: EdgeInsets.only(top: 320.0)),
+                            Text(
+                              'Inicia Sesión',
+                                style: TextStyle(
+                                color: Colors.white,
+                                fontFamily: 'OpenSans',
+                                fontSize: 30.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(height: 10.0,),
+                            _buildEmail(),
+                            SizedBox(height: 10.0),
+                            _buildPassword(),
+                            _buildForgotPassword(),
+                            _buildRememberMeCheckbox(),
+                            _buildLoginBtn(),
+                            _buildSignInWithText(),
+                            _buildSocialBtnRow(),
+                            _buildSignupBtn()
+                          ],
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 10.0,),
-                    _buildEmail(),
-                    SizedBox(height: 10.0),
-                    _buildPassword(),
-                    _buildForgotPassword(),
-                    _buildRememberMeCheckbox(),
-                    _buildLoginBtn(),
-                    _buildSignInWithText(),
-                    _buildSocialBtnRow(),
-                    _buildSignupBtn()
-                  ],
-                ),
+                ],
               ),
           ],
         ),
@@ -279,7 +277,7 @@ Widget _buildSignupBtn() {
         text: TextSpan(
           children: [
             TextSpan(
-              text: '¿No tienes una cuenta? ',
+              text: '¿No tiene una cuenta? ',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18.0,
