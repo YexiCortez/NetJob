@@ -15,6 +15,7 @@ class _LoginPageState extends State<LoginPage> {
 @override
 Widget build(BuildContext context) {
   return Scaffold(
+    resizeToAvoidBottomPadding: false,
     body: AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.light,
       child: GestureDetector(
@@ -33,7 +34,7 @@ Widget build(BuildContext context) {
               padding: EdgeInsets.symmetric(horizontal: 40.0,),
                 child: Column(
                   children: <Widget>[
-                    Padding(padding: EdgeInsets.only(top: 280.0)),
+                    Padding(padding: EdgeInsets.only(top: 270.0)),
                     Text(
                       'Inicia Sesión',
                         style: TextStyle(
@@ -43,15 +44,16 @@ Widget build(BuildContext context) {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 30.0,),
+                    SizedBox(height: 10.0,),
                     _buildEmail(),
-                    SizedBox(height: 30.0),
+                    SizedBox(height: 10.0),
                     _buildPassword(),
                     _buildForgotPassword(),
                     _buildRememberMeCheckbox(),
                     _buildLoginBtn(),
                     _buildSignInWithText(),
-                    _buildSocialBtn(),
+                    _buildSocialBtnRow(),
+                    _buildSignupBtn()
                   ],
                 ),
               ),
@@ -188,6 +190,7 @@ Widget _buildLoginBtn() {
         ),
       ),
     );
+   
   }
 
 Widget _buildSignInWithText(){
@@ -200,7 +203,7 @@ Widget _buildSignInWithText(){
             fontWeight: FontWeight.w400,
           ),
         ),
-        SizedBox(height: 20.0),
+        SizedBox(height: 10.0),
         Text(
           'Inicia sesión con',
           style: kLabelStyle,
@@ -213,9 +216,81 @@ Widget _buildSignInWithText(){
 Widget _buildSocialBtn(Function onTap, AssetImage logo){
   return GestureDetector(
     onTap: onTap,
+    child: Container(
+      height: 40.0,
+      width: 40.0,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black26,
+            offset: Offset(0,2),
+            blurRadius: 6.0
+          ),
+        ],
+        image: DecorationImage(image: logo)
+      ),
+    ),
+  );
+}
+
+Widget _buildSocialBtnRow() {
+  return Padding(
+    padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 0.0),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        _buildSocialBtn(
+        (){}, 
+        AssetImage('assets/img/facebook.png'
+        ),
+      ),
+        _buildSocialBtn(
+          (){},
+          AssetImage('assets/img/google.jpg')),
+        _buildSocialBtn(
+          (){},
+          AssetImage('assets/img/linkedin.png')), 
+    ],
+    ),
 
   );
 }
+
+
+Widget _buildSignupBtn() {
+    return GestureDetector(
+      
+      onTap: ()=> print('Sign Up Button Pressed'),
+      child: RichText(
+        
+        text: TextSpan(
+          children: [
+            TextSpan(
+              text: '¿No tienes una cuenta? ',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18.0,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+            TextSpan(
+              text: 'Sign Up',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
+        
+      ),
+      
+    );
+    
+  }
 
 }
 
