@@ -34,12 +34,25 @@ Widget build(BuildContext context) {
               ),
             ),
               Stack(
+               
                 children: [
-                  _builImgFondo(),
-                  Positioned(
-                    top: 135.0,
-                    left: 120.0,
-                    child: _buildAppLogo(),), 
+                   _builImgFondo(),
+                  Center(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(height: 140.0,),
+                        
+                        _buildAppLogo()
+                      ],
+                    ),
+                  ),
+                  
+                  
+                  // Positioned(
+                  //   top: 135.0,
+                  //   left: 120.0,
+                  //   child: _buildAppLogo(),), 
                     Container(  
                       height: double.infinity,
                       padding: EdgeInsets.symmetric(horizontal: 40.0,),

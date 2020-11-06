@@ -9,80 +9,96 @@ class InicioUsuario extends StatelessWidget {
         title: Text('Inicio'),
       ),
       drawer: CrearMenu(),
-      body: Stack(
-        children: <Widget>[          
-          Center(
-            child: Column(
-              children: [
-                SizedBox(height: 10.0),
-                Positioned(
-                      top: 85.0,
-                      left: 110.0,
-                      child: _buildAppLogo(),
+      body: Padding(
+        padding: const EdgeInsets.only(left: 40.0, right: 40.0),
+        child: Stack(
+          children: <Widget>[          
+            Center(
+              child: Column(
+                children: [
+                  SizedBox(height: 10.0),
+                   Center(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(height: 20.0,),
+                          _buildAppLogo()
+                        ],
                       ),
-                SizedBox(height: 30.0),
-                Text('¡Gracias por confiar en nosotros!',
-                style: TextStyle(
-                                fontFamily: 'OpenSans',
-                                fontSize: 20.0,
-                                fontWeight: FontWeight.bold),
                     ),
-                    SizedBox(height: 45.0),
-                Row(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 25.0),
-                    ),
-                    _categoriaImg(),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 35.0),
-                    ),
-                    _mapaImg(),
-                  ],
-                ),
-                SizedBox(height: 15.0,),
-                Row(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 25.0),
-                    ),
-                    _buttomCat(),
-                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 27.0),
-                    ),
-                    _buttomMap(),
-                  ],
-                ),
-                SizedBox(height: 10.0),
-                Row(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 25.0),
-                    ),
-                    _aboutUsImg(),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 35.0),
-                    ),
-                    _proveedorImg(),
-                  ],
-                ),
-                SizedBox(height: 15.0,), 
-                Row(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 18.0),
-                    ),
-                    _buttomAboutUs(),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 15.0),
-                    ),
-                    _buttomProveedor(),
-                  ],
-                )
-              ],
-            ),
-          )
-        ],
+                  
+                  SizedBox(height: 30.0),
+                  Text('¡Gracias por confiar en nosotros!',
+                  style: TextStyle(
+                                  fontFamily: 'OpenSans',
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(height: 45.0),
+                  Row(
+                    children: [
+                      SizedBox(width: 10.0,),
+                      // Padding(
+                      //    padding: EdgeInsets.,
+                      //  ),
+                      _categoriaImg(),
+                      SizedBox(width: 50.0,),
+                      // Padding(
+                      //   padding: EdgeInsets.symmetric(horizontal: 35.0),
+                      // ),
+                      _mapaImg(),
+                    ],
+                  ),
+                  SizedBox(height: 15.0,),
+                  Row(
+                    children: [
+                      SizedBox(width: 10.0,),
+                      // Padding(
+                      //   padding: EdgeInsets.symmetric(horizontal: 25.0),
+                      // ),
+                      _buttomCat(),
+                      SizedBox(width: 35.0,),
+                      //  Padding(
+                      //   padding: EdgeInsets.symmetric(horizontal: 27.0),
+                      // ),
+                      _buttomMap(),
+                    ],
+                  ),
+                  SizedBox(height: 10.0),
+                  Row(
+                    children: [
+                      SizedBox(width: 10.0,),
+                      // Padding(
+                      //   padding: EdgeInsets.symmetric(horizontal: 25.0),
+                      // ),
+                      _aboutUsImg(),
+                      SizedBox(width: 50.0,),
+                      // Padding(
+                      //   padding: EdgeInsets.symmetric(horizontal: 35.0),
+                      // ),
+                      _proveedorImg(),
+                    ],
+                  ),
+                  SizedBox(height: 15.0,), 
+                  Row(
+                    children: [
+                      SizedBox(width: 10.0,),
+                      // Padding(
+                      //   padding: EdgeInsets.symmetric(horizontal: 18.0),
+                      // ),
+                      _buttomAboutUs(),
+                      SizedBox(width: 35.0,),
+                      // Padding(
+                      //   padding: EdgeInsets.symmetric(horizontal: 15.0),
+                      // ),
+                      _buttomProveedor(),
+                    ],
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
@@ -217,21 +233,21 @@ Widget _proveedorImg(){
 Widget _buttomAboutUs(){
   return FlatButton(
     height: 35.0,
-    padding:EdgeInsets.symmetric(horizontal: 15.0),
+    padding:EdgeInsets.symmetric(horizontal: 30.0),
     shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(25)),
     color: Colors.lightBlueAccent,
     onPressed: ()=>{},
-    child: Text('Acerca de Nosotros'),);
+    child: Text('Acerca de \n Nosotros'),);
 }
 
 Widget _buttomProveedor(){
   return FlatButton(
     height: 35.0,
-    padding:EdgeInsets.symmetric(horizontal: 15.0),
+    padding:EdgeInsets.symmetric(horizontal: 30.0),
     shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(25)),
     color: Colors.lightBlueAccent,
     onPressed: ()=>{},
-    child: Text('Quiero ser Proveedor'),);
+    child: Text('Quiero  ser \n Proveedor'),);
 }
 
 
