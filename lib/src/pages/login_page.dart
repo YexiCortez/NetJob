@@ -6,7 +6,7 @@ import 'package:proyecto/src/pages/transicion_inicio.dart';
 import 'dart:ui';
 
 import 'package:proyecto/utilities/constants.dart';
-import 'package:proyecto/src/pages/P_registro.dart';
+//import 'package:proyecto/src/pages/P_registro.dart';
 
 class LoginPage extends StatefulWidget {
   @override

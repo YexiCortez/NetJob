@@ -8,7 +8,7 @@ class InicioUsuario extends StatelessWidget {
       appBar: AppBar(
         title: Text('Inicio'),
       ),
-      drawer: crearMenu(),
+      drawer: CrearMenu(),
       body: Stack(
         children: <Widget>[          
           Center(
