@@ -49,7 +49,7 @@ class InicioScreen extends StatelessWidget {
                     padding:EdgeInsets.symmetric(horizontal: 40.0,vertical: 15),
                     shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(25)),
                     color: Colors.black,
-                    onPressed: ()=>{},
+                    onPressed: ()=>{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>MapsScreen()))},
                     textColor: Colors.white,
                     child: Text("TRABAJAR"))
                 ],
