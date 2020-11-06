@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:proyecto/P_registro/PasswordBox.dart';
 import 'package:proyecto/P_registro/Regisboxtitle.dart';
-import 'package:proyecto/P_registro/containers.dart';
+//import 'package:proyecto/P_registro/containers.dart';
 
 class RegistroScreen extends StatelessWidget {
 

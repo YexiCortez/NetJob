@@ -6,7 +6,7 @@ import 'package:proyecto/src/pages/transicion_inicio.dart';
 import 'dart:ui';
 
 import 'package:proyecto/utilities/constants.dart';
-import 'package:proyecto/src/pages/P_registro.dart';
+//import 'package:proyecto/src/pages/P_registro.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -34,12 +34,25 @@ Widget build(BuildContext context) {
               ),
             ),
               Stack(
+               
                 children: [
-                  _builImgFondo(),
-                  Positioned(
-                    top: 135.0,
-                    left: 120.0,
-                    child: _buildAppLogo(),), 
+                   _builImgFondo(),
+                  Center(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(height: 140.0,),
+                        
+                        _buildAppLogo()
+                      ],
+                    ),
+                  ),
+                  
+                  
+                  // Positioned(
+                  //   top: 135.0,
+                  //   left: 120.0,
+                  //   child: _buildAppLogo(),), 
                     Container(  
                       height: double.infinity,
                       padding: EdgeInsets.symmetric(horizontal: 40.0,),
