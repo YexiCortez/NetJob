@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:proyecto/src/pages/P_maps.dart';
 import 'package:proyecto/src/pages/inicio_usuario.dart';
 
 class CrearMenu extends StatelessWidget {
@@ -33,7 +34,7 @@ class CrearMenu extends StatelessWidget {
         ListTile(
           leading: Icon(Icons.map_outlined, color: Colors.black,),
           title: Text('Mapa'),
-          onTap: (){},
+          onTap: ()=> Navigator.of(context).push(MaterialPageRoute(builder:(context)=>MapsScreen())),
         ),
 
         ListTile(

@@ -29,7 +29,7 @@ class _InputPageState extends State<InputPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Inputs de Texto'),
+        title: Text('Registrar empresa o negocio'),
       ),
       
       body: ListView(
@@ -38,7 +38,7 @@ class _InputPageState extends State<InputPage> {
           Container(
             padding: EdgeInsets.all(3.0),
             child:  CircleAvatar(
-              backgroundImage:  AssetImage('assets/no-pic.png'),
+              backgroundImage:  AssetImage('assets/img/no-pic.png'),
               radius: 75.0,
             ),
           ),
