@@ -40,11 +40,7 @@ class _InputPageState extends State<InputPage> {
         children: <Widget>[
           Container(
             padding: EdgeInsets.all(3.0),
-            child:  CircleAvatar(
-              backgroundImage: FileImage(foto),
-              radius: 75.0,
-              backgroundColor:Colors.transparent ,
-            ),
+            child:  _mostrarFoto()
           ),
          // _crearFotoPerfil(),
          Row(
@@ -295,13 +291,24 @@ _seleccionarFoto() async{
 
 Widget _mostrarFoto() {
 
-      return Image(
-
-        image: AssetImage( foto?.path ?? 'assets/no-image.png'),
-        height: 300.0,
-        fit: BoxFit.cover,
+  if (foto!=null) {
+    return CircleAvatar(
+              backgroundImage: FileImage(foto),
+              radius: 75.0,
+              backgroundColor:Colors.transparent ,
+            );
+  } else {
+    return CircleAvatar(
+        
+        backgroundImage: 
+        AssetImage('assets/no-image.png'),
+        radius: 75.0,
+        //height: 300.0,
+       // fit: BoxFit.cover,
 
       );
+  }
+      
   }
 
 _procesarImagen( ImageSource origen ) async {
