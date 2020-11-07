@@ -32,6 +32,7 @@ class _FullScreenMapState extends State<FullScreenMap>
     ( 
       appBar: AppBar(
         actions: _buildActions(),
+        leading: _isSearching ? const BackButton() : null,
         title: _isSearching ? _buildSearchField() : _buildTitle(context),
       ),
       body: crearMapa(),
@@ -143,8 +144,9 @@ List<Widget> _buildActions() {
           icon: const Icon(Icons.clear),
           onPressed: () {
             if (_searchQuery == null || _searchQuery.text.isEmpty) {
-              Navigator.pop(context);
-              return;
+              _stopSearching();
+              //Navigator.pop(context);
+              //return;
             }
             _clearSearchQuery();
           },
