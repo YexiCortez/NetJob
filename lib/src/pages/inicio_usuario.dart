@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proyecto/src/pages/abousUs_page.dart';
 import 'package:proyecto/src/pages/menu_izquierdo.dart';
 
 class InicioUsuario extends StatelessWidget {
@@ -7,6 +8,7 @@ class InicioUsuario extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Inicio'),
+        backgroundColor: Colors.lightBlueAccent,
       ),
       drawer: CrearMenu(),
       body: Padding(
@@ -38,14 +40,8 @@ class InicioUsuario extends StatelessWidget {
                   Row(
                     children: [
                       SizedBox(width: 10.0,),
-                      // Padding(
-                      //    padding: EdgeInsets.,
-                      //  ),
                       _categoriaImg(),
                       SizedBox(width: 50.0,),
-                      // Padding(
-                      //   padding: EdgeInsets.symmetric(horizontal: 35.0),
-                      // ),
                       _mapaImg(),
                     ],
                   ),
@@ -53,14 +49,8 @@ class InicioUsuario extends StatelessWidget {
                   Row(
                     children: [
                       SizedBox(width: 10.0,),
-                      // Padding(
-                      //   padding: EdgeInsets.symmetric(horizontal: 25.0),
-                      // ),
                       _buttomCat(),
                       SizedBox(width: 35.0,),
-                      //  Padding(
-                      //   padding: EdgeInsets.symmetric(horizontal: 27.0),
-                      // ),
                       _buttomMap(),
                     ],
                   ),
@@ -68,14 +58,8 @@ class InicioUsuario extends StatelessWidget {
                   Row(
                     children: [
                       SizedBox(width: 10.0,),
-                      // Padding(
-                      //   padding: EdgeInsets.symmetric(horizontal: 25.0),
-                      // ),
                       _aboutUsImg(),
                       SizedBox(width: 50.0,),
-                      // Padding(
-                      //   padding: EdgeInsets.symmetric(horizontal: 35.0),
-                      // ),
                       _proveedorImg(),
                     ],
                   ),
@@ -83,14 +67,8 @@ class InicioUsuario extends StatelessWidget {
                   Row(
                     children: [
                       SizedBox(width: 10.0,),
-                      // Padding(
-                      //   padding: EdgeInsets.symmetric(horizontal: 18.0),
-                      // ),
-                      _buttomAboutUs(),
+                      _buttomAboutUs(context),
                       SizedBox(width: 35.0,),
-                      // Padding(
-                      //   padding: EdgeInsets.symmetric(horizontal: 15.0),
-                      // ),
                       _buttomProveedor(),
                     ],
                   )
@@ -230,13 +208,13 @@ Widget _proveedorImg(){
 }
 
 
-Widget _buttomAboutUs(){
+Widget _buttomAboutUs(BuildContext context){
   return FlatButton(
     height: 35.0,
     padding:EdgeInsets.symmetric(horizontal: 30.0),
     shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(25)),
     color: Colors.lightBlueAccent,
-    onPressed: ()=>{},
+    onPressed: ()=>{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>AboutUsPage()))},
     child: Text('Acerca de \n Nosotros'),);
 }
 
@@ -249,6 +227,7 @@ Widget _buttomProveedor(){
     onPressed: ()=>{},
     child: Text('Quiero  ser \n Proveedor'),);
 }
+
 
 
 }

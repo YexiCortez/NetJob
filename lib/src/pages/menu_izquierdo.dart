@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:proyecto/src/pages/abousUs_page.dart';
 import 'package:proyecto/src/pages/inicio_usuario.dart';
 
 class CrearMenu extends StatelessWidget {
@@ -39,7 +40,7 @@ class CrearMenu extends StatelessWidget {
         ListTile(
           leading: Icon(Icons.supervised_user_circle_outlined, color: Colors.black,),
           title: Text('Acerca de nosotros'),
-          onTap: (){},
+          onTap: ()=> Navigator.of(context).push(MaterialPageRoute(builder:(context)=>AboutUsPage())),
         ),
 
         ListTile(

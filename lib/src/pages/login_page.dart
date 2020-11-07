@@ -48,11 +48,7 @@ Widget build(BuildContext context) {
                     ),
                   ),
                   
-                  
-                  // Positioned(
-                  //   top: 135.0,
-                  //   left: 120.0,
-                  //   child: _buildAppLogo(),), 
+                
                     Container(  
                       height: double.infinity,
                       padding: EdgeInsets.symmetric(horizontal: 40.0,),
