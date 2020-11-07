@@ -2,6 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:proyecto/src/pages/inicio_usuario.dart';
+import 'package:proyecto/src/pages/login_page.dart';
+import 'package:proyecto/src/pages/provider_home.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class CrearMenu2 extends StatelessWidget {
   @override
@@ -24,7 +27,7 @@ class CrearMenu2 extends StatelessWidget {
         ListTile(
           leading: Icon(Icons.home_outlined, color: Colors.black,),
           title: Text('Inicio'),
-          onTap: ()=> Navigator.of(context).push(MaterialPageRoute(builder:(context)=>InicioUsuario())),
+          onTap: ()=> Navigator.of(context).push(MaterialPageRoute(builder:(context)=>InicioProveedor())),
         ),
 
         ListTile(
@@ -48,7 +51,12 @@ class CrearMenu2 extends StatelessWidget {
         ListTile(
           leading: Icon(Icons.phone, color: Colors.black,),
           title: Text('Contáctenos'),
-          onTap: (){},
+          onTap: (){ launch('https://wa.me/50763631014');},
+        ),
+        ListTile(
+          leading: Icon(Icons.logout, color: Colors.black,),
+          title: Text('Cerrar Sesión'),
+          onTap: (){Navigator.of(context).push(MaterialPageRoute(builder:(context)=>LoginPage()));},
         ),
         
       ],
