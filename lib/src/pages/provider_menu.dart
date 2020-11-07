@@ -1,10 +1,9 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:proyecto/src/pages/P_maps.dart';
 import 'package:proyecto/src/pages/inicio_usuario.dart';
 
-class CrearMenu extends StatelessWidget {
+class CrearMenu2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -29,26 +28,26 @@ class CrearMenu extends StatelessWidget {
         ),
 
         ListTile(
-          leading: Icon(Icons.category_outlined, color: Colors.black,),
-          title: Text('Categorías'),
+          leading: Icon(Icons.work_outline, color: Colors.black,),
+          title: Text('Mis Contratos'),
           onTap: (){},
         ),
 
         ListTile(
-          leading: Icon(Icons.map_outlined, color: Colors.black,),
-          title: Text('Mapa'),
-          onTap: ()=> Navigator.of(context).push(MaterialPageRoute(builder:(context)=>MapsScreen())),
+          leading: Icon(Icons.history, color: Colors.black,),
+          title: Text('Historial'),
+          onTap: (){},
         ),
 
         ListTile(
           leading: Icon(Icons.supervised_user_circle_outlined, color: Colors.black,),
-          title: Text('Acerca de nosotros'),
+          title: Text('Acerca de'),
           onTap: (){},
         ),
 
         ListTile(
-          leading: Icon(Icons.work_outline, color: Colors.black,),
-          title: Text('Quiero ser Proveedor'),
+          leading: Icon(Icons.phone, color: Colors.black,),
+          title: Text('Contáctenos'),
           onTap: (){},
         ),
         

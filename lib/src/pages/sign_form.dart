@@ -1,9 +1,11 @@
 import 'dart:io';
 
+import 'package:commons/commons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:proyecto/src/pages/P_inicio.dart';
+import 'package:proyecto/src/pages/provider_home.dart';
 
 class InputPage extends StatefulWidget {
   @override
@@ -112,7 +114,7 @@ class _InputPageState extends State<InputPage> {
                 padding:EdgeInsets.symmetric(horizontal: 40.0,vertical: 15),
                 shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(25)),
                 color: Colors.black,
-                onPressed: (){},
+                onPressed: ()=>_mostrarAlert2(context),
                 textColor: Colors.white,
                 child: Text("Confirmar"))
             ],
@@ -279,6 +281,7 @@ _procesarImagen( ImageSource origen ) async {
       barrierDismissible: true,
       builder: (context){
         return AlertDialog(
+          
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
           title: Text('Cancelar formulario'),
           content: Column(
@@ -291,6 +294,32 @@ _procesarImagen( ImageSource origen ) async {
           actions: <Widget>[
             FlatButton(onPressed: ()=>Navigator.of(context).pop(), child: Text('Quedarme aquí')),
             FlatButton(onPressed: ()=>{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>InicioScreen()))}, child: Text('Quiero Cancelar'))
+          ],
+        );
+      }
+    );
+
+  }
+  void _mostrarAlert2(BuildContext context){
+
+    showDialog(
+      context: context,
+      barrierDismissible: true,
+      builder: (context){
+        return AlertDialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+          title: Text('Información Enviada'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children:<Widget> [
+              Icon(Icons.check_circle_outline_sharp,size: 60.0,color: Colors.green,),
+              Text('En breve te enviaremos un correo electrónico confirmando tu suscripción',textAlign: TextAlign.center,),
+              //FlutterLogo(size:100.0)
+              
+            ],
+          ),
+          actions: <Widget>[
+            FlatButton(onPressed: ()=>{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>InicioProveedor()))}, child: Text('Entendido'),)
           ],
         );
       }
