@@ -37,15 +37,16 @@ class InicioScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>
                 [
-                  Padding(padding: EdgeInsets.symmetric(horizontal: 20.0,vertical: 100),),
+                  Padding(padding: EdgeInsets.symmetric(vertical: 100),),
                   FlatButton(
                     padding:EdgeInsets.symmetric(horizontal: 40.0,vertical: 15),
                     shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(25)),
                     color: Colors.lightBlueAccent,
                     onPressed: ()=>{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>InicioUsuario()))},
-                    child: Text("CONTRATAR"),),
+                    child: Text("CONTRATAR"),
+                  ),
 
-                    SizedBox(width:30,),
+                  //SizedBox(width:30,),
                   //cambiop
                   RaisedButton(
                     padding:EdgeInsets.symmetric(horizontal: 40.0,vertical: 15),
