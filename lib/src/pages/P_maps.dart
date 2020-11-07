@@ -11,9 +11,12 @@ class MapsScreen extends StatelessWidget {
       (
         title: Text("Mapas"),
       ),
-      body: FullScreenMap(),
+      body:
+        
+          FullScreenMap()
       
     );
   }
 }
+
 
