@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:proyecto/src/pages/inicio_usuario.dart';
-import 'package:proyecto/src/pages/menu_izquierdo.dart';
+import 'package:proyecto/utilities/menu_izquierdo.dart';
 
 
 class AboutUsPage extends StatelessWidget {
@@ -54,10 +54,10 @@ Widget _buildAppLogo(){
     decoration: BoxDecoration(
       boxShadow:[
         BoxShadow(
-          color: Colors.black,
+          color: Colors.lightBlueAccent,
           spreadRadius: 1.0,
           blurRadius: 7.0,
-          offset: Offset(0,3),
+          
         )
       ] ,
       image: DecorationImage(
@@ -92,6 +92,7 @@ Widget _caja(){
               BoxShadow(
                 color: Colors.lightBlueAccent,
                 spreadRadius: 2.0,
+                blurRadius: 10.0,
               )
             ],
             ),
@@ -102,14 +103,18 @@ Widget _caja(){
 Widget _buttomBack(BuildContext context){
   return Container(
     //padding: EdgeInsets.only(right: 100.0),
-    child: FlatButton(
-      
+
+      child: FlatButton(
       height: 45.0,
       padding:EdgeInsets.symmetric(horizontal: 75.0),
       shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(25)),
       color: Colors.lightBlueAccent,
       onPressed: ()=>{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>InicioUsuario()))},
-      child: Text('Volver'),),
+      child: Text('Volver'),
+      splashColor: Colors.white,
+      
+      
+      ),
   );
 }
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:proyecto/src/pages/P_maps.dart';
 import 'package:proyecto/src/pages/abousUs_page.dart';
-import 'package:proyecto/src/pages/menu_izquierdo.dart';
+import 'package:proyecto/utilities/menu_izquierdo.dart';
 
 class InicioUsuario extends StatelessWidget {
   @override
