@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:proyecto/src/pages/menu_izquierdo.dart';
+import 'package:proyecto/src/pages/provider_home.dart';
+import 'package:proyecto/src/pages/sign_form.dart';
 
 class InicioUsuario extends StatelessWidget {
   @override
@@ -29,71 +31,52 @@ class InicioUsuario extends StatelessWidget {
                   
                   SizedBox(height: 30.0),
                   Text('¡Gracias por confiar en nosotros!',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                                   fontFamily: 'OpenSans',
-                                  fontSize: 20.0,
+                                  fontSize: 18.0,
                                   fontWeight: FontWeight.bold),
                       ),
                       SizedBox(height: 45.0),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    //crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      SizedBox(width: 10.0,),
-                      // Padding(
-                      //    padding: EdgeInsets.,
-                      //  ),
-                      _categoriaImg(),
-                      SizedBox(width: 50.0,),
-                      // Padding(
-                      //   padding: EdgeInsets.symmetric(horizontal: 35.0),
-                      // ),
-                      _mapaImg(),
+                      Column(
+                        //mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          _imgGenerator('assets/img/categoria.png'),
+                          _buttonGenerator('Categorías', '', context,()=>{{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>InicioUsuario()))}})
+                        ],
+                      ),
+                      SizedBox(width: 5.0,),
+                      Column(
+                        children: [
+                          _imgGenerator('assets/img/mapa.png'),
+                          _buttonGenerator('Mapa', '', context,()=>{{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>InicioUsuario()))}})
+                        ],
+                      )
+                    ],
+                    
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Column(
+                        children: [
+                          _imgGenerator('assets/img/aboutUs.png'),
+                          _buttonGenerator('Acerca de', '', context,()=>{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>InicioProveedor()))})
+                        ],
+                      ),
+                      SizedBox(width: 5.0,),
+                      Column(
+                        children: [
+                          _imgGenerator('assets/img/Proveedor.png'),
+                          _buttonGenerator('Quiero \ntrabajar', '', context,()=>{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>InputPage()))})
+                        ],
+                      )
                     ],
                   ),
-                  SizedBox(height: 15.0,),
-                  Row(
-                    children: [
-                      SizedBox(width: 10.0,),
-                      // Padding(
-                      //   padding: EdgeInsets.symmetric(horizontal: 25.0),
-                      // ),
-                      _buttomCat(),
-                      SizedBox(width: 35.0,),
-                      //  Padding(
-                      //   padding: EdgeInsets.symmetric(horizontal: 27.0),
-                      // ),
-                      _buttomMap(),
-                    ],
-                  ),
-                  SizedBox(height: 10.0),
-                  Row(
-                    children: [
-                      SizedBox(width: 10.0,),
-                      // Padding(
-                      //   padding: EdgeInsets.symmetric(horizontal: 25.0),
-                      // ),
-                      _aboutUsImg(),
-                      SizedBox(width: 50.0,),
-                      // Padding(
-                      //   padding: EdgeInsets.symmetric(horizontal: 35.0),
-                      // ),
-                      _proveedorImg(),
-                    ],
-                  ),
-                  SizedBox(height: 15.0,), 
-                  Row(
-                    children: [
-                      SizedBox(width: 10.0,),
-                      // Padding(
-                      //   padding: EdgeInsets.symmetric(horizontal: 18.0),
-                      // ),
-                      _buttomAboutUs(),
-                      SizedBox(width: 35.0,),
-                      // Padding(
-                      //   padding: EdgeInsets.symmetric(horizontal: 15.0),
-                      // ),
-                      _buttomProveedor(),
-                    ],
-                  )
                 ],
               ),
             )
@@ -106,6 +89,7 @@ class InicioUsuario extends StatelessWidget {
 
   Widget _buildAppLogo(){
   return Container(
+    
     width: 200.0,
     height: 200.0,
     decoration: BoxDecoration(
@@ -118,21 +102,24 @@ class InicioUsuario extends StatelessWidget {
   );
 }
 
-Widget _categoriaImg(){
+Widget _imgGenerator(String imgRt){
   return Container(
+    
     width: 120.0,
     height:120.0,
     decoration: BoxDecoration(
+      border: Border.all(),
       boxShadow:[
         BoxShadow(
-          color: Colors.black,
+          color: Colors.white,
           spreadRadius: 1.0,
           blurRadius: 7.0,
-          offset: Offset(0,3)
+          offset: Offset(0,3),
         )
       ] ,
       image: DecorationImage(
-        image: AssetImage('assets/img/categoria.png')
+        image: AssetImage(imgRt),
+        fit: BoxFit.scaleDown
       ),
       shape: BoxShape.circle
       
@@ -140,115 +127,14 @@ Widget _categoriaImg(){
   );
 }
 
-
-Widget _mapaImg(){
-  return Container(
-    width: 120.0,
-    height:120.0,
-    decoration: BoxDecoration(
-      boxShadow:[
-        BoxShadow(
-          color: Colors.black,
-          spreadRadius: 1.0,
-          blurRadius: 7.0,
-          offset: Offset(0,3)
-        )
-      ] ,
-      image: DecorationImage(
-        image: AssetImage('assets/img/mapa.png')
-      ),
-      shape: BoxShape.circle,
-      color: Colors.white
-    ),
-  );
-}
-
-
-Widget _buttomCat(){
+Widget _buttonGenerator(String cat,String rtImg, BuildContext context, Function f1 ){
   return FlatButton(
     height: 35.0,
     padding:EdgeInsets.symmetric(horizontal: 30.0),
     shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(25)),
     color: Colors.lightBlueAccent,
-    onPressed: ()=>{},
-    child: Text('Categorías'),);
+    onPressed: f1,
+    child: Text(cat,textAlign: TextAlign.center),);
 }
-
-Widget _buttomMap(){
-  return FlatButton(
-    height: 35.0,
-    padding:EdgeInsets.symmetric(horizontal: 50.0),
-    shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(25)),
-    color: Colors.lightBlueAccent,
-    onPressed: ()=>{},
-    child: Text('Mapa'),);
-}
-
-
-Widget _aboutUsImg(){
-  return Container(
-    width: 120.0,
-    height:120.0,
-    decoration: BoxDecoration(
-      boxShadow:[
-        BoxShadow(
-          color: Colors.black,
-          spreadRadius: 1.0,
-          blurRadius: 7.0,
-          offset: Offset(0,3)
-        )
-      ] ,
-      image: DecorationImage(
-        image: AssetImage('assets/img/aboutUs.png')
-      ),
-      shape: BoxShape.circle,
-      color: Colors.white
-    ),
-  );
-}
-
-Widget _proveedorImg(){
-  return Container(
-    width: 120.0,
-    height:120.0,
-    decoration: BoxDecoration(
-      boxShadow:[
-        BoxShadow(
-          color: Colors.black,
-          spreadRadius: 1.0,
-          blurRadius: 7.0,
-          offset: Offset(0,3)
-        )
-      ] ,
-      image: DecorationImage(
-        image: AssetImage('assets/img/Proveedor.png')
-      ),
-      shape: BoxShape.circle,
-      color: Colors.white
-    ),
-  );
-}
-
-
-Widget _buttomAboutUs(){
-  return FlatButton(
-    height: 35.0,
-    padding:EdgeInsets.symmetric(horizontal: 30.0),
-    shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(25)),
-    color: Colors.lightBlueAccent,
-    onPressed: ()=>{},
-    child: Text('Acerca de \n Nosotros'),);
-}
-
-Widget _buttomProveedor(){
-  return FlatButton(
-    height: 35.0,
-    padding:EdgeInsets.symmetric(horizontal: 30.0),
-    shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(25)),
-    color: Colors.lightBlueAccent,
-    onPressed: ()=>{},
-    child: Text('Quiero  ser \n Proveedor'),);
-}
-
 
 }

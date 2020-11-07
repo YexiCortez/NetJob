@@ -20,6 +20,7 @@ class InicioProveedor extends StatelessWidget {
             Center(
               child: Column(
                 children: [
+                  
                   SizedBox(height: 10.0),
                    Center(
                       child: Column(
@@ -41,7 +42,7 @@ class InicioProveedor extends StatelessWidget {
                       ),
                   SizedBox(height: 45.0),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Column(
                         //mainAxisAlignment: MainAxisAlignment.center,
@@ -61,21 +62,22 @@ class InicioProveedor extends StatelessWidget {
                     
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
+                      Column(
+                        children: [
+                          _imgGenerator('assets/img/contacto.png'),
+                          _buttonGenerator('Contáctanos', '', context,()=>_launchURL())
+                        ],
+                      ),
+                      SizedBox(width: 5.0,),
                       Column(
                         children: [
                           _imgGenerator('assets/img/aboutUs.png'),
                           _buttonGenerator('Acerca de', '', context,()=>{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>InicioProveedor()))})
                         ],
                       ),
-                      SizedBox(width: 5.0,),
-                      Column(
-                        children: [
-                          _imgGenerator('assets/img/contacto.png'),
-                          _buttonGenerator('Contáctanos', '', context,()=>_launchURL())
-                        ],
-                      )
+                      
                     ],
                   ),
                 ],
@@ -107,7 +109,7 @@ Widget _imgGenerator(String imgRt){
     width: 120.0,
     height:120.0,
     decoration: BoxDecoration(
-      
+      border: Border.all(),
       boxShadow:[
         BoxShadow(
           color: Colors.white,
@@ -117,7 +119,8 @@ Widget _imgGenerator(String imgRt){
         )
       ] ,
       image: DecorationImage(
-        image: AssetImage(imgRt)
+        image: AssetImage(imgRt),
+        fit: BoxFit.scaleDown
       ),
       shape: BoxShape.circle
       
