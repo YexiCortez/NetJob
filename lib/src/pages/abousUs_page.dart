@@ -79,7 +79,13 @@ Widget _caja(){
          width: 400.0,
          color: Colors.transparent,
          child: Container(
-        	decoration: BoxDecoration(
+           child: Center(
+             child: new 
+             Text('NetJob es una red de empresas, \nemprendedores y MyPymes que \n busca ser un puente entre los \n proveedores de servicios y los\n usuarios, para que ambos puedan\n verse beneficiados de una manera\n complementaria.',
+             style: TextStyle(fontSize: 18.0, fontFamily: 'OpenSans'),
+             textAlign: TextAlign.center,),
+           ),
+         decoration: BoxDecoration(
         		color: Colors.white,
         		borderRadius: BorderRadius.all(Radius.circular(30.0)),
             boxShadow: [

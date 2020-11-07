@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proyecto/src/pages/P_maps.dart';
 import 'package:proyecto/src/pages/abousUs_page.dart';
 import 'package:proyecto/src/pages/menu_izquierdo.dart';
 
@@ -51,7 +52,7 @@ class InicioUsuario extends StatelessWidget {
                       SizedBox(width: 10.0,),
                       _buttomCat(),
                       SizedBox(width: 35.0,),
-                      _buttomMap(),
+                      _buttomMap(context),
                     ],
                   ),
                   SizedBox(height: 10.0),
@@ -152,13 +153,13 @@ Widget _buttomCat(){
     child: Text('Categorías'),);
 }
 
-Widget _buttomMap(){
+Widget _buttomMap(BuildContext context){
   return FlatButton(
     height: 35.0,
     padding:EdgeInsets.symmetric(horizontal: 50.0),
     shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(25)),
     color: Colors.lightBlueAccent,
-    onPressed: ()=>{},
+    onPressed: ()=>{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>MapsScreen()))},
     child: Text('Mapa'),);
 }
 
