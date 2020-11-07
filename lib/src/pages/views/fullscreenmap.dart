@@ -47,15 +47,6 @@ class _FullScreenMapState extends State<FullScreenMap>
 
         SizedBox( height: 5 ),
 
-        // ZoomOut
-        new FloatingActionButton(
-          child: Icon( Icons.zoom_out),
-          onPressed: () {
-            mapController.animateCamera( CameraUpdate.zoomOut() );
-          }
-        ),
-
-        SizedBox( height: 5 ), 
 
     ],
   );
@@ -67,12 +58,12 @@ class _FullScreenMapState extends State<FullScreenMap>
 {
   return MapboxMap
   (
-          styleString: 'mapbox://styles/billy270/ckh6cpexg1e9v19pn7m7k8x1a',
+         // styleString: 'mapbox://styles/billy270/ckh6cpexg1e9v19pn7m7k8x1a',
           onMapCreated: _onMapCreated,
           initialCameraPosition:
-          CameraPosition
+          const CameraPosition
           (
-            target:center,
+            target:LatLng(8.560248, -82.413979),
             zoom: 14, 
           ),
   );
