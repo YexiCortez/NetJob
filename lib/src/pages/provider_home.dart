@@ -136,7 +136,7 @@ Widget _buttonGenerator(String cat,String rtImg, BuildContext context, Function 
 }
 
 _launchURL(){
-  launch('https://wa.me/50763631014');
+  launch('https://wa.me/50767259555');
 }
 /*_launchURL() async {
   const url = 'https://wa.me/50763631014';
