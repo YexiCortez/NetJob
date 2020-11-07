@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:proyecto/src/pages/views/fullscreenmap.dart';
-
+import 'package:proyecto/views/fullscreenmap.dart';
 
 class MapsScreen extends StatelessWidget {
 

@@ -1,7 +1,7 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:proyecto/src/pages/P_maps.dart';
+import 'package:proyecto/src/pages/abousUs_page.dart';
 import 'package:proyecto/src/pages/inicio_usuario.dart';
 
 class CrearMenu extends StatelessWidget {
@@ -13,10 +13,7 @@ class CrearMenu extends StatelessWidget {
       padding: EdgeInsets.zero,
       children: [
         DrawerHeader(
-          child: CircleAvatar(
-              backgroundImage:  AssetImage('assets/img/no-pic.png'),
-              radius: 75.0,
-          ),
+          child: Container(),
           decoration: BoxDecoration(
             color: Colors.lightBlueAccent,
           ),
@@ -37,13 +34,13 @@ class CrearMenu extends StatelessWidget {
         ListTile(
           leading: Icon(Icons.map_outlined, color: Colors.black,),
           title: Text('Mapa'),
-          onTap: ()=> Navigator.of(context).push(MaterialPageRoute(builder:(context)=>MapsScreen())),
+          onTap: (){},
         ),
 
         ListTile(
           leading: Icon(Icons.supervised_user_circle_outlined, color: Colors.black,),
           title: Text('Acerca de nosotros'),
-          onTap: (){},
+          onTap: ()=> Navigator.of(context).push(MaterialPageRoute(builder:(context)=>AboutUsPage())),
         ),
 
         ListTile(

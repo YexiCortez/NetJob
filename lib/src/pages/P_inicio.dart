@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:proyecto/src/pages/P_maps.dart';
 import 'package:proyecto/src/pages/inicio_usuario.dart';
+import 'package:proyecto/src/pages/sign_form.dart';
 
 class InicioScreen extends StatelessWidget {
   const InicioScreen({Key key}) : super(key: key);
@@ -33,23 +34,25 @@ class InicioScreen extends StatelessWidget {
             child : Center 
             (
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>
                 [
-                  Padding(padding: EdgeInsets.symmetric(horizontal: 20.0,vertical: 100),),
+                  Padding(padding: EdgeInsets.symmetric(vertical: 100),),
                   FlatButton(
                     padding:EdgeInsets.symmetric(horizontal: 40.0,vertical: 15),
                     shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(25)),
                     color: Colors.lightBlueAccent,
                     onPressed: ()=>{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>InicioUsuario()))},
-                    child: Text("CONTRATAR"),),
+                    child: Text("CONTRATAR"),
+                  ),
 
-                    SizedBox(width:30,),
+                  SizedBox(width:5.0,),
                   //cambiop
                   RaisedButton(
                     padding:EdgeInsets.symmetric(horizontal: 40.0,vertical: 15),
                     shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(25)),
                     color: Colors.black,
-                    onPressed: ()=>{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>MapsScreen()))},
+                    onPressed: ()=>{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>InputPage()))},
                     textColor: Colors.white,
                     child: Text("TRABAJAR"))
                 ],
