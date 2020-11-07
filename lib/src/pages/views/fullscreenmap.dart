@@ -28,6 +28,7 @@ class _FullScreenMapState extends State<FullScreenMap>
     );
   }
 
+
   Column botonesFlotantes() 
 {
   
@@ -36,45 +37,43 @@ class _FullScreenMapState extends State<FullScreenMap>
     mainAxisAlignment: MainAxisAlignment.end,
     children: <Widget>
     [
-      //zoomIn
-      FloatingActionButton
-      (
-        child: Icon(Icons.zoom_in),
-        onPressed: (){
-          mapController.animateCamera(CameraUpdate.zoomIn());
-        }
-      ),
+      // ZoomIn
+        new FloatingActionButton(
+          child: Icon( Icons.zoom_in ),
+          onPressed: () {
+            mapController.animateCamera( CameraUpdate.zoomIn() );
+          }
+        ),
 
-      SizedBox(height:10),
+        SizedBox( height: 5 ),
 
-      //zoomOut
-      FloatingActionButton
-      (
-        child: Icon(Icons.zoom_out),
-        onPressed: (){
-          mapController.animateCamera(CameraUpdate.zoomOut());
-        }
-      ),
+        // ZoomOut
+        new FloatingActionButton(
+          child: Icon( Icons.zoom_out),
+          onPressed: () {
+            mapController.animateCamera( CameraUpdate.zoomOut() );
+          }
+        ),
 
-      SizedBox(height:10),
+        SizedBox( height: 5 ), 
 
     ],
   );
 }
-  
+
 
 
   MapboxMap crearMapa()
 {
   return MapboxMap
   (
-    // styleString: 'mapbox://styles/billy270/ckh6cpexg1e9v19pn7m7k8x1a',
+          styleString: 'mapbox://styles/billy270/ckh6cpexg1e9v19pn7m7k8x1a',
           onMapCreated: _onMapCreated,
           initialCameraPosition:
           CameraPosition
           (
             target:center,
-            zoom: 25, 
+            zoom: 14, 
           ),
   );
 }
