@@ -19,7 +19,7 @@ class _LoginPageState extends State<LoginPage> {
 @override
 Widget build(BuildContext context) {
   return Scaffold(
-    resizeToAvoidBottomPadding: false,
+    resizeToAvoidBottomInset: false,
     body: AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.light,
       child: GestureDetector(
@@ -33,56 +33,56 @@ Widget build(BuildContext context) {
               color: Colors.lightBlue,
               ),
             ),
-              Stack(
-               
-                children: [
-                   _builImgFondo(),
-                  Center(
+            Stack(
+              
+              children: [
+                _builImgFondo(),
+                Center(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 140.0,),
+                      
+                      _buildAppLogo()
+                    ],
+                  ),
+                ),
+                
+                
+                // Positioned(
+                //   top: 135.0,
+                //   left: 120.0,
+                //   child: _buildAppLogo(),), 
+                Container(  
+                  height: double.infinity,
+                  padding: EdgeInsets.symmetric(horizontal: 40.0,),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(height: 140.0,),
-                        
-                        _buildAppLogo()
+                      children: <Widget>[
+                        Padding(padding: EdgeInsets.only(top: 320.0)),
+                        Text(
+                          'Inicia Sesión',
+                          style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: 'OpenSans',
+                          fontSize: 30.0,
+                          fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 10.0,),
+                        _buildEmail(),
+                        SizedBox(height: 10.0),
+                        _buildPassword(),
+                        _buildForgotPassword(),
+                        _buildRememberMeCheckbox(),
+                        _buildLoginBtn(),
+                        _buildSignInWithText(),
+                        _buildSocialBtnRow(),
+                        _buildSignupBtn(),
                       ],
                     ),
                   ),
-                  
-                  
-                  // Positioned(
-                  //   top: 135.0,
-                  //   left: 120.0,
-                  //   child: _buildAppLogo(),), 
-                    Container(  
-                      height: double.infinity,
-                      padding: EdgeInsets.symmetric(horizontal: 40.0,),
-                        child: Column(
-                          children: <Widget>[
-                            Padding(padding: EdgeInsets.only(top: 320.0)),
-                            Text(
-                              'Inicia Sesión',
-                                style: TextStyle(
-                                color: Colors.white,
-                                fontFamily: 'OpenSans',
-                                fontSize: 30.0,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            SizedBox(height: 10.0,),
-                            _buildEmail(),
-                            SizedBox(height: 10.0),
-                            _buildPassword(),
-                            _buildForgotPassword(),
-                            _buildRememberMeCheckbox(),
-                            _buildLoginBtn(),
-                            _buildSignInWithText(),
-                            _buildSocialBtnRow(),
-                            _buildSignupBtn(),
-                          ],
-                        ),
-                      ),
-                ],
-              ),
+              ],
+            ),
           ],
         ),
       ),

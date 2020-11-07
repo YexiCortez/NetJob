@@ -46,7 +46,7 @@ class InicioScreen extends StatelessWidget {
                     child: Text("CONTRATAR"),
                   ),
 
-                  //SizedBox(width:30,),
+                  SizedBox(width:5.0,),
                   //cambiop
                   RaisedButton(
                     padding:EdgeInsets.symmetric(horizontal: 40.0,vertical: 15),
