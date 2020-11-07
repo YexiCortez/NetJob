@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:proyecto/src/pages/P_maps.dart';
 import 'package:proyecto/src/pages/menu_izquierdo.dart';
 import 'package:proyecto/src/pages/provider_home.dart';
 import 'package:proyecto/src/pages/sign_form.dart';
+import 'package:proyecto/src/pages/views/fullscreenmap.dart';
 
 class InicioUsuario extends StatelessWidget {
   @override
@@ -53,7 +55,7 @@ class InicioUsuario extends StatelessWidget {
                       Column(
                         children: [
                           _imgGenerator('assets/img/mapa.png'),
-                          _buttonGenerator('Mapa', '', context,()=>{{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>InicioUsuario()))}})
+                          _buttonGenerator('Mapa', '', context,()=>{{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>FullScreenMap()))}})
                         ],
                       )
                     ],

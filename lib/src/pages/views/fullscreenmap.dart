@@ -36,11 +36,13 @@ class _FullScreenMapState extends State<FullScreenMap>
   
   return Column 
   (
-    //mainAxisAlignment: MainAxisAlignment.end,
+    
+    crossAxisAlignment: CrossAxisAlignment.end,
+    mainAxisAlignment: MainAxisAlignment.end,
     children: <Widget>
     [
 
-      SizedBox( height: 35 ),
+      SizedBox( height: 50.0 ),
       //search space 
       FloatingActionButton.extended
         (
@@ -51,30 +53,30 @@ class _FullScreenMapState extends State<FullScreenMap>
           onPressed: () {}
           ),
 
-          SizedBox( height: 70 ),
+      SizedBox( height: 525 ),
 
         // ZoomIn
-          FloatingActionButton(
-          heroTag: null,
-          child: Icon( Icons.zoom_in ),
-          onPressed: () {
-            mapController.animateCamera( CameraUpdate.zoomIn() );
-          }
+      FloatingActionButton(
+        heroTag: null,
+        child: Icon( Icons.zoom_in ),
+        onPressed: () {
+          mapController.animateCamera( CameraUpdate.zoomIn() );
+        }
+    
+      ),
         
-        ),
-        
-        SizedBox( height: 5 ),
+      SizedBox( height: 5 ),
 
-        // ZoomOut
-          FloatingActionButton(
-          heroTag: null,
-          child: Icon( Icons.zoom_out),
-          onPressed: () {
-            mapController.animateCamera( CameraUpdate.zoomOut() );
-          }
-        ),
+      // ZoomOut
+      FloatingActionButton(
+        heroTag: null,
+        child: Icon( Icons.zoom_out),
+        onPressed: () {
+          mapController.animateCamera( CameraUpdate.zoomOut() );
+        }
+      ),
 
-        SizedBox( height: 5 ),
+      SizedBox( height: 5 ),
 
     ],
   );
