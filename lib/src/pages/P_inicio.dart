@@ -34,6 +34,7 @@ class InicioScreen extends StatelessWidget {
             child : Center 
             (
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>
                 [
                   Padding(padding: EdgeInsets.symmetric(horizontal: 20.0,vertical: 100),),

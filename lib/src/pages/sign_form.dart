@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:proyecto/src/pages/P_inicio.dart';
 
 class InputPage extends StatefulWidget {
   @override
@@ -94,6 +95,28 @@ class _InputPageState extends State<InputPage> {
             ),
           ),
           Divider(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              
+              FlatButton(
+                padding:EdgeInsets.symmetric(horizontal: 40.0,vertical: 15),
+                shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(25)),
+                color: Colors.lightBlueAccent,
+                onPressed:()=> _mostrarAlert(context),//()=>{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>InicioScreen()))},
+                child: Text("Cancelar"),),
+
+                SizedBox(width:30,),
+              //cambiop
+              RaisedButton(
+                padding:EdgeInsets.symmetric(horizontal: 40.0,vertical: 15),
+                shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(25)),
+                color: Colors.black,
+                onPressed: (){},
+                textColor: Colors.white,
+                child: Text("Confirmar"))
+            ],
+          ),
           //_crearPersona(),
 
         ],
@@ -249,6 +272,31 @@ _procesarImagen( ImageSource origen ) async {
   setState(() {});
 
 }
+ void _mostrarAlert(BuildContext context){
+
+    showDialog(
+      context: context,
+      barrierDismissible: true,
+      builder: (context){
+        return AlertDialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+          title: Text('Cancelar formulario'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children:<Widget> [
+              Text('¿Seguro quieres cancelar? se perderan los datos'),
+              FlutterLogo(size:100.0)
+            ],
+          ),
+          actions: <Widget>[
+            FlatButton(onPressed: ()=>Navigator.of(context).pop(), child: Text('Quedarme aquí')),
+            FlatButton(onPressed: ()=>{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>InicioScreen()))}, child: Text('Quiero Cancelar'))
+          ],
+        );
+      }
+    );
+
+  }
 
 
 }
