@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:proyecto/P_registro/PasswordBox.dart';
 import 'package:proyecto/P_registro/Regisboxtitle.dart';
+import 'package:proyecto/src/pages/register.dart';
 //import 'package:proyecto/P_registro/containers.dart';
 
 class RegistroScreen extends StatelessWidget {
+
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +66,7 @@ class RegistroScreen extends StatelessWidget {
                       child: RaisedButton
                       (
                         onPressed: (){
-                          Navigator.of(context).pop();
+                          Navigator.of(context).push(MaterialPageRoute(builder:(context)=>RegistroForm()));;
                         },
                         color: Colors.blue,
                         shape: RoundedRectangleBorder
