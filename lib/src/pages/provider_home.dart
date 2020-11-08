@@ -26,8 +26,12 @@ class InicioProveedor extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(height: 20.0,),
-                          _buildAppLogo()
+                          CircleAvatar(
+                            backgroundImage: AssetImage('assets/img/logo.png'),
+                            radius: 100.0,
+                          ),
+                          //SizedBox(height: 20.0,),
+                          //_buildAppLogo()
                         ],
                       ),
                     ),

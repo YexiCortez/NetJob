@@ -42,8 +42,11 @@ Widget build(BuildContext context) {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(height: 140.0,),
-                      
-                      _buildAppLogo()
+                      CircleAvatar(
+                            backgroundImage: AssetImage('assets/img/logo.png'),
+                            radius: 85.0,
+                          ),
+                      //_buildAppLogo()
                     ],
                   ),
                 ),
