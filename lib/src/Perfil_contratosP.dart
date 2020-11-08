@@ -9,7 +9,10 @@ class ContratosProfile extends StatelessWidget {
     return Scaffold
     (
       body:Center(
-        child:Container(
+        child: Stack(
+          alignment: Alignment.topCenter,
+          overflow: Overflow.visible,
+        children:<Widget>[Container(
           //padding: EdgeInsets.symmetric(horizontal:20),
           height:320,
           width: 350,
@@ -37,6 +40,16 @@ class ContratosProfile extends StatelessWidget {
           ),
           )
         ) ,
+        Positioned(
+          top: -50,
+          child: CircleAvatar(
+            radius:50,
+            child: ClipRRect(
+              borderRadius: BorderRadius.all(Radius.circular(50)),
+              child: Image.asset('assets/img/jonsnow.jpg')) ,
+          )),
+        ]
+      )
       )
     );
   }
