@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proyecto/src/pages/pruebalog.dart';
 //import 'package:proyecto/src/pages/home_screen.dart';
 
 import 'src/pages/login_page.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget
       ),
       initialRoute: '/',
       routes: {
-        '/': (BuildContext context) => LoginPage(),
+        '/': (BuildContext context) => LoginPag(),
       },
       //home: HomeScreen(),
     );
