@@ -49,7 +49,7 @@ class RegistroScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: const <Widget>[
                   Image(image:AssetImage('assets/img/facebook.png')),
-                  Image(image:AssetImage('assets/img/google.jpg')),
+                  Image(image:AssetImage('assets/img/google-mas.png')),
                   Image(image:AssetImage('assets/img/linkedin.png')),
                 ],
             )

@@ -301,7 +301,7 @@ Widget _mostrarFoto() {
     return CircleAvatar(
         
         backgroundImage: 
-        AssetImage('assets/no-image.png'),
+        AssetImage('assets/img/no-pic.png'),
         radius: 75.0,
         //height: 300.0,
        // fit: BoxFit.cover,
