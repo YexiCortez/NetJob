@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:proyecto/src/pages/P_maps.dart';
 import 'package:proyecto/src/pages/abousUs_page.dart';
+import 'package:proyecto/src/pages/categorias.dart';
 import 'package:proyecto/src/pages/menu_izquierdo.dart';
 import 'package:proyecto/src/pages/proveedores_usuario.dart';
 import 'package:proyecto/src/pages/provider_home.dart';
@@ -54,7 +55,7 @@ class InicioUsuario extends StatelessWidget {
                         //mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           _imgGenerator('assets/img/categoria.png'),
-                          _buttonGenerator('Categorías', '', context,()=>{{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>ProviderList()))}})
+                          _buttonGenerator('Categorías', '', context,()=>{{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>CatPage()))}})
                         ],
                       ),
                       SizedBox(width: 5.0,),
