@@ -9,7 +9,7 @@ class MapsScreen extends StatelessWidget {
     (
       appBar: AppBar
       (
-        title: Text("Mapas"),
+        title: Text("Mapasa"),
       ),
       body:
         
