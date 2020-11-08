@@ -9,20 +9,32 @@ class FullScreenMap extends StatefulWidget
   _FullScreenMapState createState() => _FullScreenMapState();
 }
 
+
 class _FullScreenMapState extends State<FullScreenMap> 
 {
   MapboxMapController mapController;
-
+  String searchQuery = "Search query";
+  bool _isSearching = false;
   final center = LatLng(8.560248, -82.413979);
-
+  TextEditingController  _searchQuery;
   void _onMapCreated(MapboxMapController controller) {
     mapController = controller;
+  }
+  @override
+  void initState() {
+    super.initState();
+    _searchQuery = new TextEditingController();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold
     ( 
+      appBar: AppBar(
+        actions: _buildActions(),
+        leading: _isSearching ? const BackButton() : null,
+        title: _isSearching ? _buildSearchField() : _buildTitle(context),
+      ),
       body: crearMapa(),
 
       floatingActionButton:botonesFlotantes() ,
@@ -36,45 +48,47 @@ class _FullScreenMapState extends State<FullScreenMap>
   
   return Column 
   (
-    //mainAxisAlignment: MainAxisAlignment.end,
+    
+    crossAxisAlignment: CrossAxisAlignment.end,
+    mainAxisAlignment: MainAxisAlignment.end,
     children: <Widget>
     [
 
-      SizedBox( height: 35 ),
+      SizedBox( height: 50.0 ),
       //search space 
-      FloatingActionButton.extended
+      /*FloatingActionButton.extended
         (
           heroTag: null,
           elevation: 50,
           label: Text('Search'),
           icon: Icon(Icons.search),
-          onPressed: () {}
+          onPressed: (){},
           ),
-
-          SizedBox( height: 70 ),
+        */
+      SizedBox( height: 525 ),
 
         // ZoomIn
-          FloatingActionButton(
-          heroTag: null,
-          child: Icon( Icons.zoom_in ),
-          onPressed: () {
-            mapController.animateCamera( CameraUpdate.zoomIn() );
-          }
+      FloatingActionButton(
+        heroTag: null,
+        child: Icon( Icons.zoom_in ),
+        onPressed: () {
+          mapController.animateCamera( CameraUpdate.zoomIn() );
+        }
+    
+      ),
         
-        ),
-        
-        SizedBox( height: 5 ),
+      SizedBox( height: 5 ),
 
-        // ZoomOut
-          FloatingActionButton(
-          heroTag: null,
-          child: Icon( Icons.zoom_out),
-          onPressed: () {
-            mapController.animateCamera( CameraUpdate.zoomOut() );
-          }
-        ),
+      // ZoomOut
+      FloatingActionButton(
+        heroTag: null,
+        child: Icon( Icons.zoom_out),
+        onPressed: () {
+          mapController.animateCamera( CameraUpdate.zoomOut() );
+        }
+      ),
 
-        SizedBox( height: 5 ),
+      SizedBox( height: 5 ),
 
     ],
   );
@@ -107,7 +121,93 @@ class _FullScreenMapState extends State<FullScreenMap>
           
   );
 }
+
+Widget _buildSearchField() {
+    return new TextField(
+      controller: _searchQuery,
+      autofocus: true,
+      decoration: const InputDecoration(
+        hintText: 'Search...',
+        border: InputBorder.none,
+        hintStyle: const TextStyle(color: Colors.white30),
+      ),
+      style: const TextStyle(color: Colors.white, fontSize: 16.0),
+      //onChanged: updateSearchQuery,
+    );
+  }
+
+List<Widget> _buildActions() {
+
+    if (_isSearching) {
+      return <Widget>[
+        new IconButton(
+          icon: const Icon(Icons.clear),
+          onPressed: () {
+            if (_searchQuery == null || _searchQuery.text.isEmpty) {
+              _stopSearching();
+              //Navigator.pop(context);
+              //return;
+            }
+            _clearSearchQuery();
+          },
+        ),
+      ];
+    }
+
+    return <Widget>[
+      new IconButton(
+        icon: const Icon(Icons.search),
+        onPressed: _startSearch,
+      ),
+    ];
+  }
+void _clearSearchQuery() {
+    print("close search box");
+    setState(() {
+      _searchQuery.clear();
+      //updateSearchQuery("Search query");
+    });
+  }
+void _startSearch() {
+    print("open search box");
+    //ModalRoute
+        //.of(context)
+        //.addLocalHistoryEntry(new LocalHistoryEntry(onRemove: _stopSearching));
+    setState(() {
+      _isSearching = true;
+    });
+  }
+void _stopSearching() {
+    _clearSearchQuery();
+
+    setState(() {
+      _isSearching = false;
+    });
+  }
+
+  
+  Widget _buildTitle(BuildContext context) {
+    //var horizontalTitleAlignment =
+    //Platform.isIOS ? CrossAxisAlignment.center : CrossAxisAlignment.start;
+
+    return new InkWell(
+      //onTap: () => scaffoldKey.currentState.openDrawer(),
+      child: new Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12.0),
+        child: new Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: <Widget>[
+            const Text('Mapa'),
+          ],
+        ),
+      ),
+    );
+  }
+
+
 }
+
 
 
 

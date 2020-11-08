@@ -40,10 +40,7 @@ class _InputPageState extends State<InputPage> {
         children: <Widget>[
           Container(
             padding: EdgeInsets.all(3.0),
-            child:  CircleAvatar(
-              backgroundImage:  AssetImage('assets/img/no-pic.png'),
-              radius: 75.0,
-            ),
+            child:  _mostrarFoto()
           ),
          // _crearFotoPerfil(),
          Row(
@@ -74,9 +71,9 @@ class _InputPageState extends State<InputPage> {
           Divider(),
           _crearInput2('Teléfono de contacto','Solo el número'),
           Divider(),
-          _crearDropDown(_opcionSeleccionada,_opciones),
+         _crearDropDown(_opcionSeleccionada,_opciones),
           Divider(),
-          _crearDropDown(_opcionSeleccionada2,_opciones2),
+          _crearDropDown2(_opcionSeleccionada2,_opciones2),
           Divider(),
           _crearEmail(),
           Divider(),
@@ -143,7 +140,8 @@ class _InputPageState extends State<InputPage> {
     );
 
   }
-   Widget _crearInput2(String labelT,String helperT){
+  
+  Widget _crearInput2(String labelT,String helperT){
 
     return TextField(
       
@@ -183,10 +181,22 @@ class _InputPageState extends State<InputPage> {
     );
   }
 
-List<DropdownMenuItem<String>> getOpcionesDropDown(List<String> lst){
+List<DropdownMenuItem<String>> getOpcionesDropDown(){
   List<DropdownMenuItem<String>> lista = new List();
 
-  lst.forEach((opcion) { 
+  _opciones.forEach((opcion) { 
+    lista.add(DropdownMenuItem(
+      child: Text(opcion),
+      value: opcion,
+    ));
+  });
+
+  return lista;
+}
+List<DropdownMenuItem<String>> getOpcionesDropDown2(){
+  List<DropdownMenuItem<String>> lista = new List();
+
+  _opciones2.forEach((opcion) { 
     lista.add(DropdownMenuItem(
       child: Text(opcion),
       value: opcion,
@@ -204,12 +214,35 @@ Widget _crearDropDown(String _op, List<String> _lst){
       SizedBox(width: 30.0),
       Expanded(
           child: DropdownButton(
-            value: _op,
-            items: getOpcionesDropDown(_lst), 
+            value: _opcionSeleccionada,
+            items: getOpcionesDropDown(), 
             onChanged: (opt){
               setState((){
-                _op=opt;
-                print(_op);
+                _opcionSeleccionada=opt;
+                //print(_op);
+              });
+            },
+          ),
+      )
+    ],
+  );
+
+}
+
+Widget _crearDropDown2(String _op, List<String> _lst){
+
+  return Row(
+    children: <Widget>[
+      //Icon(Icons.settings),
+      SizedBox(width: 30.0),
+      Expanded(
+          child: DropdownButton(
+            value: _opcionSeleccionada2,
+            items: getOpcionesDropDown2(), 
+            onChanged: (opt){
+              setState((){
+                _opcionSeleccionada2=opt;
+                //print(_op);
               });
             },
           ),
@@ -241,26 +274,43 @@ Widget _crearFotoPerfil(){
     );
 
   }
-_tomarFoto(){
-  _procesarImagen( ImageSource.camera );
 
+_tomarFoto()async{
+  foto = await ImagePicker.pickImage(
+    source:ImageSource.camera
+  );
+  setState(() {});
 }
 
 _seleccionarFoto() async{
   foto = await ImagePicker.pickImage(
     source:ImageSource.gallery
   );
+  setState(() {});
 }
+
 Widget _mostrarFoto() {
 
-      return Image(
-
-        image: AssetImage( foto?.path ?? 'assets/no-image.png'),
-        height: 300.0,
-        fit: BoxFit.cover,
+  if (foto!=null) {
+    return CircleAvatar(
+              backgroundImage: FileImage(foto),
+              radius: 75.0,
+              backgroundColor:Colors.transparent ,
+            );
+  } else {
+    return CircleAvatar(
+        
+        backgroundImage: 
+        AssetImage('assets/no-image.png'),
+        radius: 75.0,
+        //height: 300.0,
+       // fit: BoxFit.cover,
 
       );
   }
+      
+  }
+
 _procesarImagen( ImageSource origen ) async {
 
   foto = await ImagePicker.pickImage(
@@ -274,7 +324,8 @@ _procesarImagen( ImageSource origen ) async {
   setState(() {});
 
 }
- void _mostrarAlert(BuildContext context){
+ 
+void _mostrarAlert(BuildContext context){
 
     showDialog(
       context: context,
@@ -300,7 +351,8 @@ _procesarImagen( ImageSource origen ) async {
     );
 
   }
-  void _mostrarAlert2(BuildContext context){
+
+void _mostrarAlert2(BuildContext context){
 
     showDialog(
       context: context,
