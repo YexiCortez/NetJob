@@ -8,14 +8,21 @@ class ContratosProfile extends StatelessWidget {
   {
     return Scaffold
     (
+      
       body:Center(
+        child:RaisedButton(onPressed: (){
+          showDialog(context: context,
+          builder:(context){
+            return Dialog(
+              shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(20)) ),
         child: Stack(
           alignment: Alignment.topCenter,
           overflow: Overflow.visible,
         children:<Widget>[Container(
           //padding: EdgeInsets.symmetric(horizontal:20),
-          height:320,
-          width: 350,
+          height:350,
+          width: 360,
           child: Padding(padding: EdgeInsets.all(20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -28,9 +35,22 @@ class ContratosProfile extends StatelessWidget {
                   fontSize: 23,
                   color: Colors.blue[900]),
               ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                
+                  Icon(Icons.star,color:Colors.yellow),
+                  Icon(Icons.star,color:Colors.yellow),
+                  Icon(Icons.star,color:Colors.yellow),
+                  Icon(Icons.star,color:Colors.yellow),
+                  Icon(Icons.star,color:Colors.yellow),
+                
+                  
+                ],
+              ),
               SizedBox(height:20),
               new Text(
-                "Marta supera todas las expectativas en su npapel de Electricista. Ella siempre tiene   una actitud positiva. Se adapta fácilmente a los cambios rápidos en el lugar de trabajo. Trabaja bien bajo presión sola y con otros miembros del equipo . Está orientada a los detalles y completa las tareas de manera oportuna.",
+                "Marta supera todas las expectativas en su papel de Electricista. Ella siempre tiene   una actitud positiva. Se adapta fácilmente a los cambios rápidos en el lugar de trabajo. Trabaja bien bajo presión sola y con otros miembros del equipo . Está orientada a los detalles y completa las tareas de manera oportuna.",
                 style: TextStyle(
                   fontFamily: "Roboto",
                   fontSize: 17,
@@ -42,14 +62,21 @@ class ContratosProfile extends StatelessWidget {
         ) ,
         Positioned(
           top: -50,
-          child: CircleAvatar(
-            radius:50,
-            child: ClipRRect(
-              borderRadius: BorderRadius.all(Radius.circular(50)),
-              child: Image.asset('assets/img/jonsnow.jpg')) ,
-          )),
+          child: CircleAvatar ( 
+              radius: 55, 
+              backgroundColor: Color (0xFF81D4FA), 
+              child: CircleAvatar ( 
+                radius: 50, 
+                backgroundImage: AssetImage ('assets/img/snow.jpg'), 
+              ), 
+            )),
         ]
       )
+            );
+          }
+          );
+        },)
+        
       )
     );
   }
