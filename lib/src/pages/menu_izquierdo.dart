@@ -5,6 +5,7 @@ import 'package:proyecto/src/Perfil_contratosP.dart';
 import 'package:proyecto/src/pages/P_maps.dart';
 import 'package:proyecto/src/pages/abousUs_page.dart';
 import 'package:proyecto/src/pages/inicio_usuario.dart';
+import 'package:proyecto/src/pages/pruebalog.dart';
 import 'package:proyecto/src/pages/views/fullscreenmap.dart';
 
 import 'login_page.dart';
@@ -59,7 +60,7 @@ class CrearMenu extends StatelessWidget {
         ListTile(
           leading: Icon(Icons.logout, color: Colors.black,),
           title: Text('Cerrar Sesión'),
-          onTap: (){Navigator.of(context).push(MaterialPageRoute(builder:(context)=>LoginPage()));},
+          onTap: (){Navigator.of(context).push(MaterialPageRoute(builder:(context)=>LoginPag()));},
         ),
       ],
     )
