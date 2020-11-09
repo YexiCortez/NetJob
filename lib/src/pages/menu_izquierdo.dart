@@ -6,6 +6,7 @@ import 'package:proyecto/src/pages/P_maps.dart';
 import 'package:proyecto/src/pages/abousUs_page.dart';
 import 'package:proyecto/src/pages/inicio_usuario.dart';
 import 'package:proyecto/src/pages/views/fullscreenmap.dart';
+import 'package:proyecto/src/pages/views/rateScreen.dart';
 
 import 'login_page.dart';
 
@@ -32,11 +33,11 @@ class CrearMenu extends StatelessWidget {
           title: Text('Inicio'),
           onTap: ()=> Navigator.of(context).push(MaterialPageRoute(builder:(context)=>InicioUsuario())),
         ),
-
+ // tambien hay que cambiar heheh xd
         ListTile(
           leading: Icon(Icons.category_outlined, color: Colors.black,),
           title: Text('Categorías'),
-          onTap: (){},
+          onTap: ()=> Navigator.of(context).push(MaterialPageRoute(builder:(context)=>RateScreen())),
         ),
 
         ListTile(
@@ -51,6 +52,8 @@ class CrearMenu extends StatelessWidget {
           onTap: ()=> Navigator.of(context).push(MaterialPageRoute(builder:(context)=>AboutUsPage())),
         ),
 
+
+  // aqui hay que cambiar  hacia donde va 
         ListTile(
           leading: Icon(Icons.work_outline, color: Colors.black,),
           title: Text('Quiero ser Proveedor'),

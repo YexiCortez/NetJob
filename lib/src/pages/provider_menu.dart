@@ -56,7 +56,7 @@ class CrearMenu2 extends StatelessWidget {
         ListTile(
           leading: Icon(Icons.logout, color: Colors.black,),
           title: Text('Cerrar Sesión'),
-          onTap: (){Navigator.of(context).push(MaterialPageRoute(builder:(context)=>LoginPage()));},
+          onTap: (){Navigator.of(context).push(MaterialPageRoute(builder:(context)=>LoginPag()));},
         ),
         
       ],
