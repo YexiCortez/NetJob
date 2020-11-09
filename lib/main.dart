@@ -3,7 +3,7 @@ import 'package:proyecto/src/bloc/provider.dart';
 import 'package:proyecto/src/pages/pruebalog.dart';
 //import 'package:proyecto/src/pages/home_screen.dart';
 
-import 'src/pages/login_page.dart';
+//import 'src/pages/login_page.dart';
 void main() 
 {
   runApp(MyApp());
