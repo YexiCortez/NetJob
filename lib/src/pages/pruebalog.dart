@@ -2,12 +2,10 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:proyecto/src/bloc/provider.dart';
-import 'package:proyecto/src/pages/P_registro.dart';
 import 'package:proyecto/src/pages/transicion_inicio.dart';
 import 'dart:ui';
 
 import 'package:proyecto/utilities/constants.dart';
-//import 'package:proyecto/src/pages/P_registro.dart';
 
 class LoginPag extends StatefulWidget {
   @override
