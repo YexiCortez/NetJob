@@ -26,6 +26,7 @@ class ProviderList extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Proveedores de Servicio'),
+         backgroundColor: Colors.lightBlueAccent,
       ),
       drawer: CrearMenu(),
       body: SafeArea(

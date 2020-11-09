@@ -7,6 +7,7 @@ import 'package:proyecto/src/pages/pruebalog.dart';
 void main() 
 {
   runApp(MyApp());
+  
 }
 
 class MyApp extends StatelessWidget 
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget
       debugShowCheckedModeBanner: false,
       title: 'Netjob',
       theme: ThemeData(
+        
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),

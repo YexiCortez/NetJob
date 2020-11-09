@@ -7,6 +7,7 @@ class HistorialProv extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Historial de Contrataciones'),
+         backgroundColor: Colors.lightBlueAccent,
       ),
       
     );

@@ -7,6 +7,7 @@ class CatPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Categorías',textAlign: TextAlign.right,),
         centerTitle: true,
+        backgroundColor: Colors.lightBlueAccent,
       ),
     );
   }

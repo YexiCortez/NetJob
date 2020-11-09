@@ -36,6 +36,8 @@ class _InputPageState extends State<InputPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Registrar empresa o negocio'),
+        backgroundColor: Colors.lightBlueAccent,
+        
       ),
       
       body: ListView(
