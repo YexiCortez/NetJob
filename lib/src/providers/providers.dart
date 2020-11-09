@@ -77,3 +77,29 @@ class DatosProvider{
 
 
 }
+
+class UsuarioProvider{
+
+  final String _fireBaseToken = 'AIzaSyDX1BWv70W8g0PDHS72EH1Z2iFujanC1qg';
+
+  Future nuevoUsuario(String email, String password) async{
+
+    final authData={
+      'email':email,
+      'password': password,
+      'returnSecureToken':true
+    };
+
+    final resp=await http.post(
+      'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=$_fireBaseToken'
+      ,body: json.encode(authData)
+    );
+
+    Map<String,dynamic> decodedResp=json.decode(resp.body);
+
+    print(decodedResp);
+
+
+  }
+
+}

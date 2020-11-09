@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proyecto/src/bloc/provider.dart';
 import 'package:proyecto/src/pages/pruebalog.dart';
 //import 'package:proyecto/src/pages/home_screen.dart';
 
@@ -14,7 +15,8 @@ class MyApp extends StatelessWidget
   @override
   Widget build(BuildContext context) 
   {
-    return MaterialApp(
+    return Provider(child:
+      MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Netjob',
       theme: ThemeData(
@@ -26,6 +28,8 @@ class MyApp extends StatelessWidget
         '/': (BuildContext context) => LoginPag(),
       },
       //home: HomeScreen(),
+    )
     );
+     
   }
 }

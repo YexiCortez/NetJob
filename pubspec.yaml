@@ -33,6 +33,7 @@ dependencies:
   search_widget: ^1.0.2
   http:
   mime_type:
+  rxdart: ^0.22.0
   
 
   # The following adds the Cupertino Icons font to your application.
