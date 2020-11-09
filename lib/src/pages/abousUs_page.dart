@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:proyecto/src/pages/inicio_usuario.dart';
-import 'package:proyecto/utilities/menu_izquierdo.dart';
+import 'package:proyecto/src/pages/menu_izquierdo.dart';
 
 
 class AboutUsPage extends StatelessWidget {
