@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:proyecto/src/bloc/provider.dart';
 import 'package:proyecto/src/pages/P_registro.dart';
 import 'package:proyecto/src/pages/transicion_inicio.dart';
 import 'dart:ui';
@@ -18,6 +19,7 @@ class _LoginPagState extends State<LoginPag> {
   
 @override
 Widget build(BuildContext context) {
+  final bloc = Provider.of(context);
   return Scaffold(
     backgroundColor: Colors.lightBlue,
     resizeToAvoidBottomInset: false,
@@ -60,13 +62,13 @@ Widget build(BuildContext context) {
                   ),
                 ),
                 SizedBox(height: 20.0,),
-                //SizedBox(height: 10.0,),
-                _buildEmail(),
-                //SizedBox(height: 10.0),
-                _buildPassword(),
+                _buildEmail(bloc),
+                SizedBox(height: 10.0),
+                _buildPassword(bloc),
+                SizedBox(height: 10.0),
                 _buildForgotPassword(),
                 _buildRememberMeCheckbox(),
-                _buildLoginBtn(),
+                _buildLoginBtn(bloc),
                 _buildSignInWithText(),
                 _buildSocialBtnRow(),
                 _buildSignupBtn(),
@@ -80,20 +82,20 @@ Widget build(BuildContext context) {
 }
 
 
-  Widget _buildEmail() {
-    return SizedBox(
+  Widget _buildEmail(LoginBloc bloc) {
+
+    return StreamBuilder(
+      stream: bloc.emailStream,
+      builder: (BuildContext context, AsyncSnapshot snapshot){
+      return SizedBox(
       width: 300,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children:<Widget> [
-          Text('Correo Electrónico', 
-          style: kLabelStyle, ),
-         
-          SizedBox(height: 10.0),
           Container(
+
+            //height: 40.0,
             alignment: Alignment.centerLeft,
-            decoration: kBoxDecorationStyle,
-            height: 40.0,
             child: TextField(
               keyboardType: TextInputType.emailAddress,
               style: TextStyle(
@@ -101,31 +103,39 @@ Widget build(BuildContext context) {
                 fontFamily: 'OpenSans',
               ),
               decoration: InputDecoration(
-                border: InputBorder.none,
+                border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10)),),
                 contentPadding: EdgeInsets.only(top: 8.0),
                 prefixIcon: Icon(Icons.email, color: Colors.white),
-              hintText: 'Introduzca su correo electrónico o usuario',
-              hintStyle: kHintTextStyle,
+                filled: true,
+                fillColor: Color(0xFF6CA8F1),
+                hintText: 'Correo electrónico o usuario',
+                hintStyle: kHintTextStyle,
+                counterText: snapshot.data,
+                errorText: snapshot.error,
               ),
+              onChanged:(value)=>bloc.changeEmail(value) ,
             ),
             
           )],
       ),
     );
+    });
+    
   }
 
-Widget _buildPassword(){
-  return SizedBox(
+Widget _buildPassword(LoginBloc bloc){
+
+  return StreamBuilder(
+    stream: bloc.passwordStream,
+    builder: (BuildContext context, AsyncSnapshot snapshot){
+      return SizedBox(
     width: 300,
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        Text('Contraseña', style: kLabelStyle,),
-        SizedBox(height: 10.0),
         Container(
           alignment: Alignment.centerLeft,
-          decoration: kBoxDecorationStyle,
-          height: 40.0,
           child: TextField(
             obscureText: true,
             style: TextStyle(
@@ -133,17 +143,25 @@ Widget _buildPassword(){
               fontFamily: 'OpenSans'
             ),
             decoration: InputDecoration(
-              border: InputBorder.none,
+              border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10)),),
+              filled: true,
+              fillColor: Color(0xFF6CA8F1),
               contentPadding: EdgeInsets.only(top: 8.0),
               prefixIcon: Icon(Icons.lock, color: Colors.white,),
               hintText: 'Introduzca su contraseña',
-              hintStyle: kHintTextStyle
+              hintStyle: kHintTextStyle,
+              counterText: snapshot.data,
+              errorText: snapshot.error,
             ),
+            onChanged: (value)=>bloc.changePassword(value),
           ),
         )
       ],
     ),
   );
+    });
+
+  
 }
 
 Widget _buildForgotPassword(){
@@ -189,15 +207,17 @@ Widget _buildRememberMeCheckbox(){
     );
 }
 
-Widget _buildLoginBtn() {
-    return Container(
+Widget _buildLoginBtn(LoginBloc bloc) {
+  return StreamBuilder(
+    stream: bloc.formValidStream ,
+    //initialData: initialData ,
+    builder: (BuildContext context, AsyncSnapshot snapshot){
+       return Container(
       padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 30.0),
       width: double.infinity,
       child: RaisedButton(
         elevation: 5.0,
-        onPressed: () {
-          Navigator.of(context).push(MaterialPageRoute(builder:(context)=>HomePage()));
-        }, //=> print('Login Button Pressed'),
+        onPressed:snapshot.hasData ? ()=> _login(bloc,context):null , //=> print('Login Button Pressed'),
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
@@ -215,7 +235,18 @@ Widget _buildLoginBtn() {
         ),
       ),
     );
+    },
+  );
    
+   
+  }
+
+  _login(LoginBloc bloc, BuildContext context){
+    print('***************');
+    print('Email: ${bloc.email}');
+    print('Password: ${bloc.password}');
+    print('***************');
+    Navigator.pushReplacement(context,MaterialPageRoute(builder:(context)=>HomePage()));
   }
 
 Widget _buildSignInWithText(){

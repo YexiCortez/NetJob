@@ -21,6 +21,7 @@ class _RegistroFormState extends State<RegistroForm> {
   final formKey       = GlobalKey<FormState>();
   final scaffoldKey   = GlobalKey<ScaffoldState>();
   final datosProvider = new DatosProvider();
+  final usuarioProvider = new UsuarioProvider();
 
   PersonaModel persona = new PersonaModel();
   bool _guardando = false;
