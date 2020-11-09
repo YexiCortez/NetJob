@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:proyecto/src/pages/inicio_usuario.dart';
 import 'package:proyecto/src/pages/login_page.dart';
 import 'package:proyecto/src/pages/provider_home.dart';
+import 'package:proyecto/src/pages/pruebalog.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class CrearMenu2 extends StatelessWidget {
