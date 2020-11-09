@@ -4,6 +4,8 @@ import 'package:commons/commons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:proyecto/src/bloc/login_bloc.dart';
+import 'package:proyecto/src/bloc/provider.dart';
 import 'package:proyecto/src/pages/P_inicio.dart';
 import 'package:proyecto/src/pages/provider_home.dart';
 
@@ -13,7 +15,7 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-
+  
   File foto;
   String _nombre=' ';
   String _email;
@@ -30,6 +32,7 @@ class _InputPageState extends State<InputPage> {
 
   @override
   Widget build(BuildContext context) {
+    final bloc = Provider.of(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Registrar empresa o negocio'),
@@ -71,28 +74,13 @@ class _InputPageState extends State<InputPage> {
           Divider(),
           _crearInput2('Teléfono de contacto','Solo el número'),
           Divider(),
-         _crearDropDown(_opcionSeleccionada,_opciones),
+         _crearDropDown(_opcionSeleccionada,_opciones,bloc),
           Divider(),
           _crearDropDown2(_opcionSeleccionada2,_opciones2),
           Divider(),
-          _crearEmail(),
+          _crearEmail(bloc),
           Divider(),
-          SizedBox(
-            height: 150.0,
-            child:Expanded(
-              child:TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  labelText: 'Descripción de la empresa'
-                ),
-                maxLines: null,
-                expands: true,
-                textAlignVertical: TextAlignVertical.top,
-              ),
-            ),
-          ),
+          _crearInput3(bloc),
           Divider(),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -140,6 +128,34 @@ class _InputPageState extends State<InputPage> {
     );
 
   }
+  Widget _crearInput3(LoginBloc bloc){
+    return StreamBuilder(
+      stream: bloc.descripcionStream ,
+      //initialData: initialData ,
+      builder: (BuildContext context, AsyncSnapshot snapshot){
+        return SizedBox(
+            height: 150.0,
+            child:Expanded(
+              child:TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                  
+                  ),
+                  labelText: 'Descripción de la empresa',
+                  counterText: snapshot.data,
+                  errorText: snapshot.error,
+                ),
+                maxLines: null,
+                expands: true,
+                textAlignVertical: TextAlignVertical.top,
+                onChanged:(value)=>bloc.changeDesc(value) ,
+              ),
+            ),
+          );
+      },
+    );
+  }
   
   Widget _crearInput2(String labelT,String helperT){
 
@@ -160,23 +176,27 @@ class _InputPageState extends State<InputPage> {
 
   }
 
-  Widget _crearEmail(){
-    return TextField(
-      keyboardType: TextInputType.emailAddress,
-      decoration: InputDecoration(
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        hintText: 'Email',
-        labelText: 'Email' ,
-        suffixIcon: Icon(Icons.alternate_email),
-        //icon: Icon(Icons.email),
-      ),
-      onChanged: (valor){
-        setState(() {
-          _email = valor;
-
-        });
+  Widget _crearEmail(LoginBloc bloc){
+    return StreamBuilder(
+      stream: bloc.emailStream,
+      //initialData: initialData ,
+      builder: (BuildContext context, AsyncSnapshot snapshot){   
+        return TextField(
+          keyboardType: TextInputType.emailAddress,
+          decoration: InputDecoration(
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            hintText: 'Email',
+            labelText: 'Email' ,
+            suffixIcon: Icon(Icons.alternate_email),
+            counterText: snapshot.data,
+            errorText: snapshot.error,
+            //icon: Icon(Icons.email),
+          ),
+          onChanged: (value)=>bloc.changeEmail(value),
+          
+        );
       },
     );
   }
@@ -206,7 +226,7 @@ List<DropdownMenuItem<String>> getOpcionesDropDown2(){
   return lista;
 }
 
-Widget _crearDropDown(String _op, List<String> _lst){
+Widget _crearDropDown(String _op, List<String> _lst, LoginBloc bloc){
 
   return Row(
     children: <Widget>[
@@ -251,29 +271,6 @@ Widget _crearDropDown2(String _op, List<String> _lst){
   );
 
 }
- 
-Widget _crearFotoPerfil(){
-
-    return Container(
-      
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(30.0),
-        color: Colors.white,
-        boxShadow: <BoxShadow>[
-          BoxShadow(
-            color: Colors.black26,
-            blurRadius: 10.0,
-            spreadRadius: 2.0,
-            offset: Offset(2.0,10.0),)
-        ]
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(30.0),
-        child: Image.network('https://www.google.com/url?sa=i&url=http%3A%2F%2Fwww.clker.com%2Fclipart-no-image-icon.html&psig=AOvVaw08GXkRIR8vAAlBlf-nbHNu&ust=1604799096465000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJiTuNWk7-wCFQAAAAAdAAAAABAD'),
-        ),
-    );
-
-  }
 
 _tomarFoto()async{
   foto = await ImagePicker.pickImage(
@@ -378,6 +375,13 @@ void _mostrarAlert2(BuildContext context){
     );
 
   }
-
+  
+  _login(LoginBloc bloc, BuildContext context){
+    print('***************');
+    print('Email: ${bloc.email}');
+    print('Password: ${bloc.password}');
+    print('***************');
+    Navigator.pushReplacement(context,MaterialPageRoute(builder:(context)=>InicioProveedor()));
+  }
 
 }

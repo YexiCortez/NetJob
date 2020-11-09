@@ -34,5 +34,55 @@ class Validators {
     }
   );
 
+  final validarNombre = StreamTransformer<String, String>.fromHandlers(
+    handleData: ( name, sink ) {
+
+      if ( name!=null) {
+        sink.add( name );
+      } else {
+        sink.addError('Debes colocar un nombre');
+      }
+
+    }
+  );
+
+  final validarTel = StreamTransformer<String, String>.fromHandlers(
+    handleData: ( tel, sink ) {
+
+
+      Pattern pattern = r'^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$';
+      RegExp regExp   = new RegExp(pattern);
+
+      if ( regExp.hasMatch( tel ) ) {
+        sink.add( tel );
+      } else {
+        sink.addError('Introduce números');
+      }
+
+    }
+  );
+
+  final  validarServicio = StreamTransformer<String, String>.fromHandlers(
+    handleData: ( name, sink ) {
+
+      if ( name!='Seleccionar Categoría de desempeño') {
+        sink.add( name );
+      } else {
+        sink.addError('Elige una Categoría');
+      }
+
+    }
+  );
+  final validarDescrip = StreamTransformer<String, String>.fromHandlers(
+    handleData: ( name, sink ) {
+
+      if ( name!=null) {
+        sink.add( name );
+      } else {
+        sink.addError('Describe tu trabajo');
+      }
+
+    }
+  );
 
 }

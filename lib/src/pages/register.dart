@@ -144,7 +144,7 @@ class _RegistroFormState extends State<RegistroForm> {
         labelText: 'Ingresa tu Correo Electrónico',
         border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
       ),
-      onSaved: (value) => persona.email = value,
+      //onSaved: (value) => persona.email = value,
       validator: (value) {
         if ( value.length < 3 ) {
           return 'Ingresa tu Correo Electrónico';
@@ -252,8 +252,8 @@ Widget _mostrarFoto() {
 
     // setState(() {_guardando = false; });
     mostrarSnackbar('Registro guardado');
-
-    Navigator.pop(context);*/
+*/
+    Navigator.pop(context);
 
   }
   void mostrarSnackbar(String mensaje) {

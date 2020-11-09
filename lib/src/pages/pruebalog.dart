@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:proyecto/src/bloc/provider.dart';
+import 'package:proyecto/src/pages/register.dart';
 import 'package:proyecto/src/pages/transicion_inicio.dart';
 import 'dart:ui';
 
@@ -316,7 +317,7 @@ Widget _buildSocialBtnRow() {
 Widget _buildSignupBtn() {
     return GestureDetector(
       
-      onTap: (){Navigator.of(context).push(MaterialPageRoute(builder:(context)=>RegistroScreen()));},
+      onTap: (){Navigator.of(context).push(MaterialPageRoute(builder:(context)=>RegistroForm()));},
       
       child: RichText(
         text: TextSpan(
