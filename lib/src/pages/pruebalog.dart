@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:proyecto/src/bloc/provider.dart';
 import 'package:proyecto/src/pages/register.dart';
 import 'package:proyecto/src/pages/transicion_inicio.dart';
+import 'package:proyecto/src/providers/providers.dart';
 import 'dart:ui';
 
 import 'package:proyecto/utilities/constants.dart';
@@ -15,9 +16,10 @@ class LoginPag extends StatefulWidget {
 
 class _LoginPagState extends State<LoginPag> {
   bool _rememberMe = false;
-  
+  final usuarioProvider= new UsuarioProvider();
 @override
 Widget build(BuildContext context) {
+  
   final bloc = Provider.of(context);
   return Scaffold(
     backgroundColor: Colors.lightBlue,
@@ -241,11 +243,9 @@ Widget _buildLoginBtn(LoginBloc bloc) {
   }
 
   _login(LoginBloc bloc, BuildContext context){
-    print('***************');
-    print('Email: ${bloc.email}');
-    print('Password: ${bloc.password}');
-    print('***************');
-    Navigator.pushReplacement(context,MaterialPageRoute(builder:(context)=>HomePage()));
+    
+    usuarioProvider.login(bloc.email, bloc.password);
+    //Navigator.pushReplacement(context,MaterialPageRoute(builder:(context)=>HomePage()));
   }
 
 Widget _buildSignInWithText(){
