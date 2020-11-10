@@ -23,10 +23,18 @@ class RateScreen extends StatelessWidget {
               fontSize: 25,
               fontWeight: FontWeight.bold,
             )),
-            decoration: BoxDecoration(
-              border:Border.all(color: Colors.lightBlue,
-              width: 5)
-            ),
+            decoration: BoxDecoration
+            (
+              border:Border.all
+              (
+                color: Colors.lightBlue,
+                width: 5,
+              ),
+              borderRadius: BorderRadius.all
+                (
+                  Radius.circular(5.0)
+                ),
+            )
           ),
           Container
           (
