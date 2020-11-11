@@ -91,14 +91,14 @@ class _InputPageState extends State<InputPage> {
           Divider(),
           _crearInput(),
           Divider(),
-          _crearInput2('Habilidades','Separadas por coma',bloc,bloc.habilStream,negocio.habilidades,controlHabil),
+          _crearInput2(),
           Divider(),
           
-          _crearInput2('Idiomas que Hablas','Separados por coma',bloc,bloc.idiomasStream,negocio.idiomas,controlIdioma),
+          _crearInput4(),
           Divider(),
-          _crearInput2('Ciudad y Provincia donde ofreces servicio','Ejemplo: David, Chiriquí',bloc,bloc.ciudadStream,negocio.ciudad,controlCiudad),
+          _crearInput5(),
           Divider(),
-          _crearInput2('Teléfono de contacto','Solo el número',bloc,bloc.telStream,negocio.telefono,controlTel),
+          _crearInput6(),
           Divider(),
          _crearDropDown(_opcionSeleccionada,_opciones,bloc),
           Divider(),
@@ -167,6 +167,7 @@ class _InputPageState extends State<InputPage> {
     );
     //print(negocio.nombreNegocio);
   }
+  
   Widget _crearInput3(LoginBloc bloc){
     
         return SizedBox(
@@ -195,28 +196,66 @@ class _InputPageState extends State<InputPage> {
 
   }
   
-  Widget _crearInput2(String labelT,String helperT, LoginBloc bloc, Stream<String> x,String y , TextEditingController z){
+  Widget _crearInput2(){
         return TextFormField(
-          controller: z,
+          controller: controlHabil,
           textCapitalization: TextCapitalization.sentences,
           decoration: InputDecoration(
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.0),
             ),
-            //hintText: 'Nombre de la empresa/negocio',
-            labelText: labelT ,
-            helperText: helperT,
-            //counterText: snapshot.data,
-            //errorText: snapshot.error,
-            //suffixIcon: Icon(Icons.business_center),
-            //icon: Icon(Icons.account_circle),
+            labelText: 'Habilidades' ,
+            helperText:'Separadas por coma',
             ),
-           //onChanged: (value)=>bloc.changeName(value) ,
-           onSaved: (value)=>y=value,
+           onSaved: (value)=>negocio.habilidades=value,
         );
-
   }
 
+  Widget _crearInput4(){
+    return TextFormField(
+      controller: controlIdioma,
+      textCapitalization: TextCapitalization.sentences,
+      decoration: InputDecoration(
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+        labelText: 'Idiomas que Hablas' ,
+        helperText: 'Separados por coma',
+        ),
+        onSaved: (value)=>negocio.idiomas=value,
+    );
+  }
+  
+  Widget _crearInput5(){
+        return TextFormField(
+          controller: controlCiudad,
+          textCapitalization: TextCapitalization.sentences,
+          decoration: InputDecoration(
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            labelText: 'Ciudad y provincia donde ofreces tus servicios' ,
+            helperText: 'Ejample: David, Chiriquí',
+            ),
+           onSaved: (value)=>negocio.ciudad=value,
+        );
+  }
+  
+  Widget _crearInput6(){
+        return TextFormField(
+          controller: controlTel,
+          textCapitalization: TextCapitalization.sentences,
+          decoration: InputDecoration(
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            labelText: 'Teléfono de contacto' ,
+            helperText: 'Ejemplo: 60234567',
+            ),
+           onSaved: (value)=>negocio.telefono=value,
+        );
+  }
+  
   Widget _crearEmail(LoginBloc bloc){  
         return TextFormField(
           controller: controlMail,
@@ -420,13 +459,6 @@ void _mostrarAlert2(BuildContext context){
 
   }
   
-  _login(LoginBloc bloc, BuildContext context){
-    print('***************');
-    print('Email: ${bloc.email}');
-    print('Password: ${bloc.password}');
-    print('***************');
-    Navigator.pushReplacement(context,MaterialPageRoute(builder:(context)=>InicioProveedor()));
-  }
   /*_register(LoginBloc bloc, BuildContext context)async{
     Map info=await negocioProvider.crearNegocio(
       bloc.email, 
