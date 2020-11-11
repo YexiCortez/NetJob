@@ -497,7 +497,7 @@ void _mostrarAlert2(BuildContext context){
     if ( foto != null ) {
       negocio.fotoUrl = await negocioProvider.subirImagen(foto);
     }
-    _mostrarAlert2(context);
+    //_mostrarAlert2(context);
 
   /*
 
@@ -511,7 +511,7 @@ void _mostrarAlert2(BuildContext context){
     // setState(() {_guardando = false; });
     mostrarSnackbar('Registro guardado');
 */
-    Navigator.pop(context);
+    Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=>InicioProveedor()));
 
   }
 
