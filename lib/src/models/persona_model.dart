@@ -15,7 +15,7 @@ class PersonaModel {
     String email;
     //bool disponible;
     String fotoUrl;
-    Image foto;
+    //Image foto;
 
     PersonaModel({
         this.id,
@@ -24,7 +24,7 @@ class PersonaModel {
         this.email  = '',
         //this.disponible = true,
         this.fotoUrl,
-        this.foto,
+        //this.foto,
     });
 
     factory PersonaModel.fromJson(Map<String, dynamic> json) => new PersonaModel(
@@ -34,7 +34,7 @@ class PersonaModel {
         email      : json["email"],
         //disponible : json["disponible"],
         fotoUrl    : json["fotoUrl"],
-        foto       : json["foto"], 
+        //foto       : json["foto"], 
     );
 
     Map<String, dynamic> toJson() => {
@@ -44,6 +44,6 @@ class PersonaModel {
         "email"      : email,
         //"disponible" : disponible,
         "fotoUrl"    : fotoUrl,
-        "foto"       : foto,
+        //"foto"       : foto,
     };
 }

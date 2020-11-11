@@ -6,16 +6,26 @@ import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:proyecto/src/bloc/login_bloc.dart';
 import 'package:proyecto/src/bloc/provider.dart';
+import 'package:proyecto/src/models/negocio_model.dart';
 import 'package:proyecto/src/pages/P_inicio.dart';
 import 'package:proyecto/src/pages/provider_home.dart';
+import 'package:proyecto/src/providers/providers.dart';
+import 'package:proyecto/utilities/utils.dart';
 
 class InputPage extends StatefulWidget {
   @override
+  
   _InputPageState createState() => _InputPageState();
+  
 }
 
 class _InputPageState extends State<InputPage> {
   
+  final negocioProvider = new DatosProvider();
+  final formKey       = GlobalKey<FormState>();
+  final scaffoldKey   = GlobalKey<ScaffoldState>();
+  NegocioModel negocio = new NegocioModel();
+  final TextEditingController controler=new TextEditingController();
   File foto;
   String _nombre=' ';
   String _email;
@@ -28,21 +38,34 @@ class _InputPageState extends State<InputPage> {
   List<String> _opciones = ['Seleccionar Categoría de desempeño','Ayuda con Mudanza','Compras','Entregas a domicilio','Jardinería','Limpieza','Levantamiento de Objetos pesados','Reparaciones'];
   List<String> _opciones2 = ['Seleccionar Nivel de Experiencia','Menos de 1 año','2 - 3 años','Más de 4 años',];
 
-  TextEditingController _inputFieldDateController = new TextEditingController();
+  TextEditingController controlMail = new TextEditingController();
+  TextEditingController controlHabil= new TextEditingController();
+  TextEditingController controlNom = new TextEditingController();
+  TextEditingController controlIdioma = new TextEditingController();
+  TextEditingController controlCiudad = new TextEditingController();
+  TextEditingController controlTel = new TextEditingController();
+  TextEditingController controlCat = new TextEditingController();
+  TextEditingController controlExp = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     final bloc = Provider.of(context);
     return Scaffold(
+      key: scaffoldKey,
       appBar: AppBar(
         title: Text('Registrar empresa o negocio'),
         backgroundColor: Colors.lightBlueAccent,
         
       ),
       
-      body: ListView(
-        padding: EdgeInsets.symmetric(horizontal:10.0, vertical:20.0),
-        children: <Widget>[
+      body: SingleChildScrollView(
+        
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal:10.0, vertical:20.0),
+          child: Form(
+            key: formKey,
+            child:Column(
+              children: <Widget>[
           Container(
             padding: EdgeInsets.all(3.0),
             child:  _mostrarFoto()
@@ -68,13 +91,14 @@ class _InputPageState extends State<InputPage> {
           Divider(),
           _crearInput(),
           Divider(),
-          _crearInput2('Habilidades','Separadas por coma'),
+          _crearInput2('Habilidades','Separadas por coma',bloc,bloc.habilStream,negocio.habilidades,controlHabil),
           Divider(),
-          _crearInput2('Idiomas que Hablas','Separados por coma'),
+          
+          _crearInput2('Idiomas que Hablas','Separados por coma',bloc,bloc.idiomasStream,negocio.idiomas,controlIdioma),
           Divider(),
-          _crearInput2('Ciudad y Provincia donde ofreces servicio','Ejemplo: David, Chiriquí'),
+          _crearInput2('Ciudad y Provincia donde ofreces servicio','Ejemplo: David, Chiriquí',bloc,bloc.ciudadStream,negocio.ciudad,controlCiudad),
           Divider(),
-          _crearInput2('Teléfono de contacto','Solo el número'),
+          _crearInput2('Teléfono de contacto','Solo el número',bloc,bloc.telStream,negocio.telefono,controlTel),
           Divider(),
          _crearDropDown(_opcionSeleccionada,_opciones,bloc),
           Divider(),
@@ -97,25 +121,36 @@ class _InputPageState extends State<InputPage> {
 
                 SizedBox(width:30,),
               //cambiop
-              RaisedButton(
-                padding:EdgeInsets.symmetric(horizontal: 40.0,vertical: 15),
-                shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(25)),
-                color: Colors.black,
-                onPressed: ()=>_mostrarAlert2(context),
-                textColor: Colors.white,
-                child: Text("Confirmar"))
+               RaisedButton(
+                  padding:EdgeInsets.symmetric(horizontal: 40.0,vertical: 15),
+                  shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(25)),
+                  color: Colors.black,
+                  onPressed://()=>{
+                    _submit,
+                   //_mostrarAlert2(context),
+                    //print('************************************boton')
+                    //},
+                  textColor: Colors.white,
+                  child: Text("Confirmar")),
+                  
+              
             ],
           ),
           //_crearPersona(),
 
         ],
+            ) 
+            ),
+        ),
+        
       ),
     );
   }
 
   Widget _crearInput(){
 
-    return TextField(
+    return TextFormField(
+      controller: controlNom,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
         border: OutlineInputBorder(
@@ -127,63 +162,64 @@ class _InputPageState extends State<InputPage> {
         suffixIcon: Icon(Icons.business_center),
         //icon: Icon(Icons.account_circle),
         ),
+        onSaved: (value)=>negocio.nombreNegocio=value,
+        
     );
-
+    //print(negocio.nombreNegocio);
   }
   Widget _crearInput3(LoginBloc bloc){
-    return StreamBuilder(
-      stream: bloc.descripcionStream ,
-      //initialData: initialData ,
-      builder: (BuildContext context, AsyncSnapshot snapshot){
+    
         return SizedBox(
             height: 150.0,
             child:Expanded(
-              child:TextField(
+              child:TextFormField(
+                controller: controler,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10.0),
                   
                   ),
                   labelText: 'Descripción de la empresa',
-                  counterText: snapshot.data,
-                  errorText: snapshot.error,
+                  //counterText: snapshot.data,
+                  //errorText: snapshot.error,
                 ),
                 maxLines: null,
                 expands: true,
                 textAlignVertical: TextAlignVertical.top,
-                onChanged:(value)=>bloc.changeDesc(value) ,
+                //onChanged:(value)=>bloc.changeDesc(value) ,
+                onSaved: (value)=>negocio.descripcion=value,
+                
               ),
             ),
           );
-      },
-    );
+
   }
   
-  Widget _crearInput2(String labelT,String helperT){
-
-    return TextField(
-      
-      textCapitalization: TextCapitalization.sentences,
-      decoration: InputDecoration(
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        //hintText: 'Nombre de la empresa/negocio',
-        labelText: labelT ,
-        helperText: helperT,
-        //suffixIcon: Icon(Icons.business_center),
-        //icon: Icon(Icons.account_circle),
-        ),
-    );
+  Widget _crearInput2(String labelT,String helperT, LoginBloc bloc, Stream<String> x,String y , TextEditingController z){
+        return TextFormField(
+          controller: z,
+          textCapitalization: TextCapitalization.sentences,
+          decoration: InputDecoration(
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            //hintText: 'Nombre de la empresa/negocio',
+            labelText: labelT ,
+            helperText: helperT,
+            //counterText: snapshot.data,
+            //errorText: snapshot.error,
+            //suffixIcon: Icon(Icons.business_center),
+            //icon: Icon(Icons.account_circle),
+            ),
+           //onChanged: (value)=>bloc.changeName(value) ,
+           onSaved: (value)=>y=value,
+        );
 
   }
 
-  Widget _crearEmail(LoginBloc bloc){
-    return StreamBuilder(
-      stream: bloc.emailStream,
-      //initialData: initialData ,
-      builder: (BuildContext context, AsyncSnapshot snapshot){   
-        return TextField(
+  Widget _crearEmail(LoginBloc bloc){  
+        return TextFormField(
+          controller: controlMail,
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
             border: OutlineInputBorder(
@@ -192,15 +228,14 @@ class _InputPageState extends State<InputPage> {
             hintText: 'Email',
             labelText: 'Email' ,
             suffixIcon: Icon(Icons.alternate_email),
-            counterText: snapshot.data,
-            errorText: snapshot.error,
+           // counterText: snapshot.data,
+           // errorText: snapshot.error,
             //icon: Icon(Icons.email),
           ),
-          onChanged: (value)=>bloc.changeEmail(value),
+          //onChanged: (value)=>bloc.changeEmail(value),
+          onSaved: (value)=>negocio.email=value,
           
         );
-      },
-    );
   }
 
 List<DropdownMenuItem<String>> getOpcionesDropDown(){
@@ -241,8 +276,10 @@ Widget _crearDropDown(String _op, List<String> _lst, LoginBloc bloc){
             onChanged: (opt){
               setState((){
                 _opcionSeleccionada=opt;
-                //print(_op);
+                
               });
+              negocio.categoria=_opcionSeleccionada;
+              //print(negocio.categoria);
             },
           ),
       )
@@ -264,9 +301,13 @@ Widget _crearDropDown2(String _op, List<String> _lst){
             onChanged: (opt){
               setState((){
                 _opcionSeleccionada2=opt;
-                //print(_op);
+                print('************************************');
+                //
               });
+              negocio.exp=_opcionSeleccionada2;
+              //print(negocio.exp);
             },
+            
           ),
       )
     ],
@@ -278,7 +319,7 @@ _tomarFoto()async{
   foto = await ImagePicker.pickImage(
     source:ImageSource.camera
   );
-  setState(() {});
+  setState(() {print('************************************');});
 }
 
 _seleccionarFoto() async{
@@ -289,7 +330,7 @@ _seleccionarFoto() async{
 }
 
 Widget _mostrarFoto() {
-
+  print('************************************');
   if (foto!=null) {
     return CircleAvatar(
               backgroundImage: FileImage(foto),
@@ -301,6 +342,7 @@ Widget _mostrarFoto() {
         
         backgroundImage: 
         AssetImage('assets/img/no-pic.png'),
+        backgroundColor: Colors.lightBlueAccent,
         radius: 75.0,
         //height: 300.0,
        // fit: BoxFit.cover,
@@ -352,7 +394,7 @@ void _mostrarAlert(BuildContext context){
   }
 
 void _mostrarAlert2(BuildContext context){
-
+    print('************************************');
     showDialog(
       context: context,
       barrierDismissible: true,
@@ -370,7 +412,7 @@ void _mostrarAlert2(BuildContext context){
             ],
           ),
           actions: <Widget>[
-            FlatButton(onPressed: ()=>{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>InicioProveedor()))}, child: Text('Entendido'),)
+            FlatButton(onPressed: ()=>{Navigator.of(context).pop()}, child: Text('Entendido'),)
           ],
         );
       }
@@ -384,6 +426,61 @@ void _mostrarAlert2(BuildContext context){
     print('Password: ${bloc.password}');
     print('***************');
     Navigator.pushReplacement(context,MaterialPageRoute(builder:(context)=>InicioProveedor()));
+  }
+  /*_register(LoginBloc bloc, BuildContext context)async{
+    Map info=await negocioProvider.crearNegocio(
+      bloc.email, 
+      bloc.name,
+      bloc.service,
+      bloc.descripcion,
+      bloc.tel,
+      bloc.idiomas,
+      bloc.habil,
+      bloc.ciudad,
+      bloc.exp);
+    if(info['ok']){
+      Navigator.pushReplacement(context,MaterialPageRoute(builder:(context)=>LoginPag()));
+      //mostrarSnackbar('Registro guardado');
+    }
+    else{
+      mostrarAlerta(context,info['mensaje']);
+    }
+    if( foto!=null ){
+
+      persona.fotoUrl = await negocioProvider.subirImagen(foto);
+    }
+  }*/
+  void _submit() async {
+    print('************************************envio');
+    //print(negocio.nombreNegocio);
+    //print(formKey.currentState.validate());
+    if ( !formKey.currentState.validate() ) return;
+
+    formKey.currentState.save();
+    
+    negocioProvider.crearNegocio(negocio);
+
+    //setState(() {_guardando = true; });
+
+    if ( foto != null ) {
+      negocio.fotoUrl = await negocioProvider.subirImagen(foto);
+    }
+    _mostrarAlert2(context);
+
+  /*
+
+    if ( persona.id == null ) {
+      datosProvider.crearPersona(persona);
+    } else {
+      datosProvider.editarProducto(persona);
+    }
+
+
+    // setState(() {_guardando = false; });
+    mostrarSnackbar('Registro guardado');
+*/
+    Navigator.pop(context);
+
   }
 
 }

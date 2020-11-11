@@ -8,6 +8,7 @@ import 'package:proyecto/src/providers/providers.dart';
 import 'dart:ui';
 
 import 'package:proyecto/utilities/constants.dart';
+import 'package:proyecto/utilities/utils.dart';
 
 class LoginPag extends StatefulWidget {
   @override
@@ -242,9 +243,15 @@ Widget _buildLoginBtn(LoginBloc bloc) {
    
   }
 
-  _login(LoginBloc bloc, BuildContext context){
+  _login(LoginBloc bloc, BuildContext context)async{
     
-    usuarioProvider.login(bloc.email, bloc.password);
+    Map info = await usuarioProvider.login(bloc.email, bloc.password);
+    if(info['ok']){
+      Navigator.pushReplacement(context,MaterialPageRoute(builder:(context)=>HomePage()));
+    }
+    else{
+      mostrarAlerta(context,info['mensaje']);
+    }
     //Navigator.pushReplacement(context,MaterialPageRoute(builder:(context)=>HomePage()));
   }
 

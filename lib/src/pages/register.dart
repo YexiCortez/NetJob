@@ -11,7 +11,9 @@ import 'package:image_picker/image_picker.dart';
 import 'package:proyecto/src/bloc/login_bloc.dart';
 import 'package:proyecto/src/bloc/provider.dart';
 import 'package:proyecto/src/models/persona_model.dart';
+import 'package:proyecto/src/pages/pruebalog.dart';
 import 'package:proyecto/src/providers/providers.dart';
+import 'package:proyecto/utilities/utils.dart';
 
 class RegistroForm extends StatefulWidget {
   @override
@@ -161,6 +163,7 @@ class _RegistroFormState extends State<RegistroForm> {
               border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
             ),
             onChanged: (value)=>bloc.changeEmail(value),
+            onSaved: (value)=>persona.email=value,
             //onSaved: (value) => persona.email = value,
             /*validator: (value) {
               if ( value.length < 3 ) {
@@ -252,8 +255,19 @@ Widget _mostrarFoto() {
     );
     
   }
-  _register(LoginBloc bloc, BuildContext context){
-    usuarioProvider.nuevoUsuario(bloc.email, bloc.password);
+  _register(LoginBloc bloc, BuildContext context)async{
+    Map info=await usuarioProvider.nuevoUsuario(bloc.email, bloc.password);
+    if(info['ok']){
+      Navigator.pushReplacement(context,MaterialPageRoute(builder:(context)=>LoginPag()));
+      //mostrarSnackbar('Registro guardado');
+    }
+    else{
+      mostrarAlerta(context,info['mensaje']);
+    }
+    if( foto!=null ){
+
+      persona.fotoUrl = await usuarioProvider.subirImagen(foto);
+    }
   }
 
   void _submit() //async {
@@ -261,7 +275,7 @@ Widget _mostrarFoto() {
     
 
     if ( !formKey.currentState.validate() ) return;
-
+    
     formKey.currentState.save();
     
     datosProvider.crearPersona(persona);/*
