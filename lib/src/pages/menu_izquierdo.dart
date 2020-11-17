@@ -9,7 +9,7 @@ import 'package:proyecto/src/pages/pruebalog.dart';
 import 'package:proyecto/src/pages/views/fullscreenmap.dart';
 import 'package:proyecto/src/pages/views/rateScreen.dart';
 
-import 'login_page.dart';
+//import 'login_page.dart';
 
 class CrearMenu extends StatelessWidget {
   @override

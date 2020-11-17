@@ -7,6 +7,7 @@ class CommentsUsers extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Comentarios'),
+         backgroundColor: Colors.lightBlueAccent,
       ),
       drawer: CrearMenu(),
     );

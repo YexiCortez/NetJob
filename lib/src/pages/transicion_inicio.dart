@@ -73,15 +73,17 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   Widget makePage() {
     return Container(
       child: Container(
-        
+        decoration: BoxDecoration(
+          image: DecorationImage(image: AssetImage('assets/img/prub.png'))
+        ),
         child: Padding(
           padding: EdgeInsets.all(40),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              SizedBox(height: 100,),
+              SizedBox(height: 320,),
               Align(
-                child: Image.asset('assets/img/Netjob-logoicono.png'),
+                //child: Image.asset('assets/img/Netjob-logoicono.png'),
               ),
               //Image.asset('assets/images/logo123.jpg',),
               Align(
@@ -102,7 +104,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     child: Container(
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: Colors.blue.withOpacity(.4)
+                        color: Colors.lightBlueAccent.withOpacity(0.5),
                       ),
                       child: InkWell(
                         onTap: () {
@@ -116,7 +118,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                               margin: EdgeInsets.all(10),
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                color: Colors.blue
+                                color: Colors.lightBlueAccent,
                               ),
                             ),
                           ),

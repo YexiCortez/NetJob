@@ -37,10 +37,10 @@ class Validators {
   final validarNombre = StreamTransformer<String, String>.fromHandlers(
     handleData: ( name, sink ) {
 
-      if ( name!=null) {
+      if ( name.length>=1) {
         sink.add( name );
       } else {
-        sink.addError('Debes colocar un nombre');
+        sink.addError('No puede estar vacío');
       }
 
     }

@@ -8,8 +8,12 @@ import 'package:flutter/services.dart';
 import 'package:commons/commons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:proyecto/src/bloc/login_bloc.dart';
+import 'package:proyecto/src/bloc/provider.dart';
 import 'package:proyecto/src/models/persona_model.dart';
+import 'package:proyecto/src/pages/pruebalog.dart';
 import 'package:proyecto/src/providers/providers.dart';
+import 'package:proyecto/utilities/utils.dart';
 
 class RegistroForm extends StatefulWidget {
   @override
@@ -29,7 +33,7 @@ class _RegistroFormState extends State<RegistroForm> {
   
   @override
   Widget build(BuildContext context) {
-
+    final bloc = Provider.of(context);
     final PersonaModel perData = ModalRoute.of(context).settings.arguments;
     if( perData != null){
       persona = perData;
@@ -63,9 +67,9 @@ class _RegistroFormState extends State<RegistroForm> {
           ),
             _crearNombre(),
             SizedBox(height: 10,),
-            _crearContra(),
+            _crearContra(bloc),
             SizedBox(height: 10,),
-            _crearEmail(),
+            _crearEmail(bloc),
             SizedBox(height: 10,),
             _crearEmail2(),
             Container
@@ -82,7 +86,7 @@ class _RegistroFormState extends State<RegistroForm> {
                     ],
                 )
               ),
-            _crearBoton()
+            _crearBoton(bloc)
           ],) ,
           )
         ),
@@ -112,47 +116,67 @@ class _RegistroFormState extends State<RegistroForm> {
 
   }
   
-  Widget _crearContra() {
+  Widget _crearContra(LoginBloc bloc) {
+    return StreamBuilder(
+      stream: bloc.passwordStream ,
+      //initialData: initialData ,
+      builder: (BuildContext context, AsyncSnapshot snapshot){
+        return TextFormField(
+          obscureText: true,
+          //initialValue: persona.psswd,
+          textCapitalization: TextCapitalization.sentences,
+          decoration: InputDecoration(
+            counterText: snapshot.data,
+            errorText: snapshot.error,
+            labelText: 'Contraseña',
+            border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
+          ),
+          onSaved: (value) => persona.psswd = value,
+          onChanged: (value)=>bloc.changePassword(value),
+          /*validator: (value) {
+            if ( value.length < 3 ) {
+              return 'Ingrese una contraseña';
+            } else {
+              return null;
+            }
+          },*/
+        );
 
-    return TextFormField(
-      obscureText: true,
-      initialValue: persona.psswd,
-      textCapitalization: TextCapitalization.sentences,
-      decoration: InputDecoration(
-        labelText: 'Contraseña',
-        border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
-      ),
-      onSaved: (value) => persona.psswd = value,
-      validator: (value) {
-        if ( value.length < 3 ) {
-          return 'Ingrese una contraseña';
-        } else {
-          return null;
-        }
       },
     );
-
+    
   }
 
-  Widget _crearEmail() {
-
-    return TextFormField(
-      keyboardType: TextInputType.emailAddress,
-      initialValue: persona.email,
-      textCapitalization: TextCapitalization.sentences,
-      decoration: InputDecoration(
-        labelText: 'Ingresa tu Correo Electrónico',
-        border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
-      ),
-      //onSaved: (value) => persona.email = value,
-      validator: (value) {
-        if ( value.length < 3 ) {
-          return 'Ingresa tu Correo Electrónico';
-        } else {
-          return null;
-        }
+  Widget _crearEmail(LoginBloc bloc) {
+    return StreamBuilder(
+      stream: bloc.emailStream,
+      //initialData: initialData ,
+      builder: (BuildContext context, AsyncSnapshot snapshot){
+          return TextFormField(
+            keyboardType: TextInputType.emailAddress,
+            //initialValue: persona.email,
+            textCapitalization: TextCapitalization.sentences,
+            decoration: InputDecoration(
+              counterText: snapshot.data,
+              errorText: snapshot.error,
+              labelText: 'Ingresa tu Correo Electrónico',
+              border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
+            ),
+            onChanged: (value)=>bloc.changeEmail(value),
+            onSaved: (value)=>persona.email=value,
+            //onSaved: (value) => persona.email = value,
+            /*validator: (value) {
+              if ( value.length < 3 ) {
+                return 'Ingresa tu Correo Electrónico';
+              } else {
+                return null;
+              }
+            },¨*/
+      );
       },
     );
+
+    
 
   }
    Widget _crearEmail2() {
@@ -194,7 +218,7 @@ Widget _mostrarFoto() {
 
   if (foto!=null) {
     return CircleAvatar(
-              backgroundImage: FileImage(foto),
+              backgroundImage: FileImage(foto, scale: 0.5),
               radius: 75.0,
               backgroundColor:Colors.transparent ,
             );
@@ -211,35 +235,63 @@ Widget _mostrarFoto() {
   }
       
   }
-  Widget _crearBoton() {
-    return RaisedButton.icon(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20.0)
-      ),
-      color: Colors.lightBlue,
-      textColor: Colors.white,
-      label: Text('Registrarme'),
-      
-      icon: Icon( Icons.check_circle ),
-      onPressed: /*( _guardando ) ? null :*/ _submit,
+  Widget _crearBoton(LoginBloc bloc) {
+    return StreamBuilder(
+      stream: bloc.formValidStream ,
+      //initialData: initialData ,
+      builder: (BuildContext context, AsyncSnapshot snapshot){
+        return RaisedButton.icon(
+          shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0)
+          ),
+          color: Colors.lightBlue,
+          textColor: Colors.white,
+          label: Text('Registrarme'),
+          
+          icon: Icon( Icons.check_circle ),
+          onPressed: snapshot.hasData? ()=> _register(bloc, context):null/*( _guardando ) ? null : _submit*/,
+        );
+      },
     );
+    
+  }
+  _register(LoginBloc bloc, BuildContext context)async{
+    Map info=await usuarioProvider.nuevoUsuario(bloc.email, bloc.password);
+    if(info['ok']){
+      Navigator.pushReplacement(context,MaterialPageRoute(builder:(context)=>LoginPag()));
+      //mostrarSnackbar('Registro guardado');
+    }
+    else{
+      mostrarAlerta(context,info['mensaje']);
+    }
+    if ( !formKey.currentState.validate() ) return;
+    
+    formKey.currentState.save();
+    if( foto!=null ){
+
+      persona.fotoUrl = await usuarioProvider.subirImagen(foto);
+    }
+    datosProvider.crearPersona(persona);
+    
   }
 
-  void _submit() //async {
-    {
+  void _submit() async {
+    
     
 
-    if ( !formKey.currentState.validate() ) return;
-
-    formKey.currentState.save();
+    //if ( !formKey.currentState.validate() ) return;
     
-    datosProvider.crearPersona(persona);/*
+    //formKey.currentState.save();
+    
+    datosProvider.crearPersona(persona);
+    if ( foto != null ) {
+      persona.fotoUrl = await usuarioProvider.subirImagen(foto);
+    }
+    /*
 
     setState(() {_guardando = true; });
 
-    if ( foto != null ) {
-      persona.fotoUrl = await datosProvider.subirImagen(foto);
-    }
+    
 
 
 

@@ -2,11 +2,14 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:proyecto/src/bloc/provider.dart';
+import 'package:proyecto/src/models/persona_model.dart';
 import 'package:proyecto/src/pages/register.dart';
 import 'package:proyecto/src/pages/transicion_inicio.dart';
+import 'package:proyecto/src/providers/providers.dart';
 import 'dart:ui';
 
 import 'package:proyecto/utilities/constants.dart';
+import 'package:proyecto/utilities/utils.dart';
 
 class LoginPag extends StatefulWidget {
   @override
@@ -15,9 +18,10 @@ class LoginPag extends StatefulWidget {
 
 class _LoginPagState extends State<LoginPag> {
   bool _rememberMe = false;
-  
+  final usuarioProvider= new UsuarioProvider();
 @override
 Widget build(BuildContext context) {
+  
   final bloc = Provider.of(context);
   return Scaffold(
     backgroundColor: Colors.lightBlue,
@@ -240,12 +244,17 @@ Widget _buildLoginBtn(LoginBloc bloc) {
    
   }
 
-  _login(LoginBloc bloc, BuildContext context){
-    print('***************');
-    print('Email: ${bloc.email}');
-    print('Password: ${bloc.password}');
-    print('***************');
-    Navigator.pushReplacement(context,MaterialPageRoute(builder:(context)=>HomePage()));
+  _login(LoginBloc bloc, BuildContext context, /*PersonaModel persona*/)async{
+    
+    Map info = await usuarioProvider.login(bloc.email, bloc.password);
+    if(info['ok']){
+      Navigator.pushReplacement(context,MaterialPageRoute(builder:(context)=>HomePage()));
+      Navigator.pushNamed(context, 'escoger'/*,arguments: persona*/);
+    }
+    else{
+      mostrarAlerta(context,info['mensaje']);
+    }
+    //Navigator.pushReplacement(context,MaterialPageRoute(builder:(context)=>HomePage()));
   }
 
 Widget _buildSignInWithText(){

@@ -14,6 +14,7 @@ class InicioUsuario extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Inicio'),
+         backgroundColor: Colors.lightBlueAccent,
       ),
       drawer: CrearMenu(),
       body: Padding(
