@@ -218,7 +218,7 @@ Widget _mostrarFoto() {
 
   if (foto!=null) {
     return CircleAvatar(
-              backgroundImage: FileImage(foto),
+              backgroundImage: FileImage(foto, scale: 0.5),
               radius: 75.0,
               backgroundColor:Colors.transparent ,
             );
@@ -264,27 +264,34 @@ Widget _mostrarFoto() {
     else{
       mostrarAlerta(context,info['mensaje']);
     }
+    if ( !formKey.currentState.validate() ) return;
+    
+    formKey.currentState.save();
     if( foto!=null ){
 
       persona.fotoUrl = await usuarioProvider.subirImagen(foto);
     }
+    datosProvider.crearPersona(persona);
+    
   }
 
-  void _submit() //async {
-    {
+  void _submit() async {
+    
     
 
-    if ( !formKey.currentState.validate() ) return;
+    //if ( !formKey.currentState.validate() ) return;
     
-    formKey.currentState.save();
+    //formKey.currentState.save();
     
-    datosProvider.crearPersona(persona);/*
+    datosProvider.crearPersona(persona);
+    if ( foto != null ) {
+      persona.fotoUrl = await usuarioProvider.subirImagen(foto);
+    }
+    /*
 
     setState(() {_guardando = true; });
 
-    if ( foto != null ) {
-      persona.fotoUrl = await datosProvider.subirImagen(foto);
-    }
+    
 
 
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:proyecto/src/pages/P_maps.dart';
 import 'package:proyecto/src/pages/inicio_usuario.dart';
+import 'package:proyecto/src/pages/provider_home.dart';
 import 'package:proyecto/src/pages/sign_form.dart';
 
 class InicioScreen extends StatelessWidget {
@@ -52,7 +53,7 @@ class InicioScreen extends StatelessWidget {
                     padding:EdgeInsets.symmetric(horizontal: 40.0,vertical: 15),
                     shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(25)),
                     color: Colors.black,
-                    onPressed: ()=>{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>InputPage()))},
+                    onPressed: ()=>{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>InicioProveedor()))},
                     textColor: Colors.white,
                     child: Text("TRABAJAR"))
                 ],

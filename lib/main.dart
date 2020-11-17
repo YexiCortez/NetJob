@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:proyecto/src/bloc/provider.dart';
+import 'package:proyecto/src/pages/inicio_usuario.dart';
+import 'package:proyecto/src/pages/provider_home.dart';
 import 'package:proyecto/src/pages/pruebalog.dart';
+import 'package:proyecto/src/pages/transicion_inicio.dart';
 import 'package:proyecto/src/preferencias_usuario/preferencias_usuario.dart';
 //import 'package:proyecto/src/pages/home_screen.dart';
 
@@ -34,6 +37,10 @@ class MyApp extends StatelessWidget
       initialRoute: '/',
       routes: {
         '/': (BuildContext context) => LoginPag(),
+        'escoger':(BuildContext context)=>HomePage(),
+        'proveedor':(BuildContext context)=>InicioProveedor(),
+        'cliente':(BuildContext context)=>InicioUsuario(),
+        
       },
       //home: HomeScreen(),
     )

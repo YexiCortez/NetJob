@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:proyecto/src/bloc/provider.dart';
+import 'package:proyecto/src/models/persona_model.dart';
 import 'package:proyecto/src/pages/register.dart';
 import 'package:proyecto/src/pages/transicion_inicio.dart';
 import 'package:proyecto/src/providers/providers.dart';
@@ -243,11 +244,12 @@ Widget _buildLoginBtn(LoginBloc bloc) {
    
   }
 
-  _login(LoginBloc bloc, BuildContext context)async{
+  _login(LoginBloc bloc, BuildContext context, /*PersonaModel persona*/)async{
     
     Map info = await usuarioProvider.login(bloc.email, bloc.password);
     if(info['ok']){
       Navigator.pushReplacement(context,MaterialPageRoute(builder:(context)=>HomePage()));
+      Navigator.pushNamed(context, 'escoger'/*,arguments: persona*/);
     }
     else{
       mostrarAlerta(context,info['mensaje']);
