@@ -52,7 +52,7 @@ class CatPage extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         child: Column(
           children: [
-            FadeInImage(placeholder: AssetImage('assets/img/jar-loading.gif'), image:NetworkImage(img),fit: BoxFit.cover,height: 200,),
+            FadeInImage(placeholder: AssetImage('assets/img/jar-loading.gif'), image:NetworkImage(img),fit: BoxFit.cover,height: 250,),
             ListTile(
             title: Text('${ titulo }'),
             tileColor: Colors.lightBlueAccent,

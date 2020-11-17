@@ -16,6 +16,11 @@ class _VistaProveedoresState extends State<VistaProveedores> {
        appBar: AppBar(
          backgroundColor: Colors.lightBlueAccent,
        ),
+       body: ListView(
+         children: [
+           
+         ],
+       ),
     );
   }
 }
