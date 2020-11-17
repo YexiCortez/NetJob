@@ -88,6 +88,7 @@ Widget build(BuildContext context) {
   Widget _buildEmail(LoginBloc bloc) {
 
     return StreamBuilder(
+      //initialData: snapshot.data,
       stream: bloc.emailStream,
       builder: (BuildContext context, AsyncSnapshot snapshot){
       return SizedBox(
@@ -100,12 +101,15 @@ Widget build(BuildContext context) {
             //height: 40.0,
             alignment: Alignment.centerLeft,
             child: TextField(
+              controller: TextEditingController(text: snapshot.data),
               keyboardType: TextInputType.emailAddress,
               style: TextStyle(
                 color:Colors.white,
                 fontFamily: 'OpenSans',
+                
               ),
               decoration: InputDecoration(
+                
                 border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10)),),
                 contentPadding: EdgeInsets.only(top: 8.0),
                 prefixIcon: Icon(Icons.email, color: Colors.white),
@@ -129,6 +133,7 @@ Widget build(BuildContext context) {
 Widget _buildPassword(LoginBloc bloc){
 
   return StreamBuilder(
+    //initialData: bloc.passwordStream,
     stream: bloc.passwordStream,
     builder: (BuildContext context, AsyncSnapshot snapshot){
       return SizedBox(
@@ -139,7 +144,9 @@ Widget _buildPassword(LoginBloc bloc){
       children: <Widget>[
         Container(
           alignment: Alignment.centerLeft,
-          child: TextField(
+          child: TextFormField(
+            initialValue: snapshot.data,
+            //controller: TextEditingController(text: snapshot.data),
             obscureText: true,
             style: TextStyle(
               color:Colors.white,
@@ -153,7 +160,7 @@ Widget _buildPassword(LoginBloc bloc){
               prefixIcon: Icon(Icons.lock, color: Colors.white,),
               hintText: 'Introduzca su contraseña',
               hintStyle: kHintTextStyle,
-              counterText: snapshot.data,
+              //counterText: snapshot.data,
               errorText: snapshot.error,
             ),
             onChanged: (value)=>bloc.changePassword(value),
