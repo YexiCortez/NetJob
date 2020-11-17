@@ -54,18 +54,18 @@ class _FullScreenMapState extends State<FullScreenMap>
     children: <Widget>
     [
 
-      SizedBox( height: 50.0 ),
+      SizedBox( height: 130.0 ),
       //search space 
-      /*FloatingActionButton.extended
+      FloatingActionButton.extended
         (
           heroTag: null,
           elevation: 50,
-          label: Text('Search'),
-          icon: Icon(Icons.search),
+          label: Text('Opciones'),
+          icon: Icon(Icons.aspect_ratio),
           onPressed: (){},
           ),
-        */
-      SizedBox( height: 525 ),
+      
+      SizedBox( height: 480 ),
 
         // ZoomIn
       FloatingActionButton(
