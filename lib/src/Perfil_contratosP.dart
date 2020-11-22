@@ -51,7 +51,7 @@ class ContratosProfile extends StatelessWidget {
               SizedBox(height:20),
               //prueba 
               new Text(
-                "Marta supera todas las expectativas en su papel de Electricista. Ella siempre tiene   una actitud positiva. Se adapta fácilmente a los cambios rápidos en el lugar de trabajo. Trabaja bien bajo presión sola y con otros miembros del equipo . Está orientada a los detalles y completa las tareas de manera oportuna.",
+                "Marta supera todas las expectativas en su papel de Electricista. Ella siempre tiene   una actitud positiva. Se adapta fácilmente a los cambios rápidos en el lugar de trabajo.",
                 style: TextStyle(
                   fontFamily: "Roboto",
                   fontSize: 17,

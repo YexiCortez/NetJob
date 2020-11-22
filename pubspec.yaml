@@ -24,6 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   page_transition: ^1.1.4
+  image_ink_well: ^0.1.0
   smooth_star_rating: ^1.1.1
   flutter_swiper: ^1.1.6
   mapbox_gl: ^0.9.0

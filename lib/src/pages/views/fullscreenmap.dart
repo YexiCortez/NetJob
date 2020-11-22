@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mapbox_gl/mapbox_gl.dart';
 import 'package:proyecto/src/pages/inicio_usuario.dart';
+import 'package:proyecto/src/pages/mapspt2.dart';
 
 class FullScreenMap extends StatefulWidget 
 {
@@ -62,7 +63,7 @@ class _FullScreenMapState extends State<FullScreenMap>
           elevation: 50,
           label: Text('Opciones'),
           icon: Icon(Icons.aspect_ratio),
-          onPressed: (){},
+          onPressed: ()=>{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>OpcionesScreen()))},
           ),
       
       SizedBox( height: 480 ),
