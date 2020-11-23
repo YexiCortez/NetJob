@@ -64,14 +64,14 @@ class InicioProveedor extends StatelessWidget {
                         //mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           _imgGenerator('assets/img/contratos.png'),
-                          _buttonGenerator('Mis Contratos', '', context,()=>{{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>InicioUsuario()))}})
+                          _buttonGenerator('Mis Contratos', '', context,(){})
                         ],
                       ),
                       SizedBox(width: 5.0,),
                       Column(
                         children: [
                           _imgGenerator('assets/img/historial.png'),
-                          _buttonGenerator('Historial', '', context,()=>{{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>InicioUsuario()))}})
+                          _buttonGenerator('Historial', '', context,(){})
                         ],
                       )
                     ],
