@@ -39,7 +39,7 @@ class _FullScreenMapState extends State<FullScreenMap>
       body: crearMapa(),
 
       floatingActionButton:botonesFlotantes() ,
-
+        
     );
   }
 
@@ -119,9 +119,15 @@ class _FullScreenMapState extends State<FullScreenMap>
             target:LatLng(8.560248, -82.413979),
             zoom: 14, 
           ),
+         
           
   );
+  
 }
+
+
+
+
 
 Widget _buildSearchField() {
     return new TextField(

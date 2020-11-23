@@ -57,6 +57,7 @@ class _FullScreenMapState extends State<Volcanmap>
 
       SizedBox( height: 130.0 ),
       //search space 
+      
       FloatingActionButton.extended
         (
           heroTag: null,
