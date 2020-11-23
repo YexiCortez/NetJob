@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:proyecto/src/pages/abousUs_page.dart';
 import 'package:proyecto/src/pages/inicio_usuario.dart';
 import 'package:proyecto/src/pages/menu_izquierdo.dart';
 import 'package:proyecto/src/pages/provider_menu.dart';
@@ -89,7 +90,7 @@ class InicioProveedor extends StatelessWidget {
                       Column(
                         children: [
                           _imgGenerator('assets/img/aboutUs.png'),
-                          _buttonGenerator('Acerca de', '', context,()=>{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>InicioProveedor()))})
+                          _buttonGenerator('Acerca de', '', context,()=>{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>AboutUsPage()))})
                         ],
                       ),
                       

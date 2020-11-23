@@ -13,14 +13,14 @@ class OpcionesScreen extends StatelessWidget {
   Widget build(BuildContext context) 
   {
     
-    List _empleos=["Chef"];
+    List _empleos=["Chef","hola","chofer"];
         return Scaffold(
           
           appBar: AppBar
           (
             title: Text("Mapasa"),
           ),
-          body:Column(
+          body:ListView(
     
             children: <Widget>[
               Container
@@ -97,8 +97,8 @@ class OpcionesScreen extends StatelessWidget {
                       children :<Widget>[
                         
                         cartasBox(circulosS(image: AssetImage ('assets/img/chef.jpg')),_empleos[0]),
-                        cartasBox(circulosS(image: AssetImage ('assets/img/arquitecto.jpg')),_empleos[0]),
-                        cartasBox(circulosS(image: AssetImage ('assets/img/fontanero.jpg')),_empleos[0]),
+                        cartasBox(circulosS(image: AssetImage ('assets/img/arquitecto.jpg')),_empleos[1]),
+                        cartasBox(circulosS(image: AssetImage ('assets/img/fontanero.jpg')),_empleos[2]),
                         cartasBox(circulosS(image: AssetImage ('assets/img/ganadero.jpg')),_empleos[0]),
                         cartasBox(circulosS(image: AssetImage ('assets/img/fotografo.jpg')),_empleos[0]),
                         cartasBox(circulosS(image: AssetImage ('assets/img/agricultor.jpg')),_empleos[0]),
@@ -115,7 +115,7 @@ class OpcionesScreen extends StatelessWidget {
 
 
 
-Widget cartasBox(circulosS,_empleos,)
+Widget cartasBox(circulosS, String x,)
 {
     return Container(
       child: new Card
@@ -128,7 +128,7 @@ Widget cartasBox(circulosS,_empleos,)
             children: <Widget>
             [
               circulosS,
-              new Text(_empleos[0],
+              new Text(x,
             style: TextStyle(fontSize: 15.0),)
           ],
                                 
