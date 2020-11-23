@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:proyecto/src/models/persona_model.dart';
+import 'package:proyecto/src/pages/abousUs_page.dart';
 import 'package:proyecto/src/pages/inicio_usuario.dart';
 import 'package:proyecto/src/pages/provider_home.dart';
 import 'package:proyecto/src/pages/pruebalog.dart';
@@ -51,7 +52,7 @@ class CrearMenu2 extends StatelessWidget {
         ListTile(
           leading: Icon(Icons.supervised_user_circle_outlined, color: Colors.black,),
           title: Text('Acerca de'),
-          onTap: (){},
+          onTap: ()=> Navigator.of(context).push(MaterialPageRoute(builder:(context)=>AboutUsPage())),
         ),
 
         ListTile(
