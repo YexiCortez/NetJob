@@ -12,6 +12,7 @@ class OpcionesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) 
   {
+    //holaaa
     
     List _empleos=["Chef","hola","chofer"];
         return Scaffold(
