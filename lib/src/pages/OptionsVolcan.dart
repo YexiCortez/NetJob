@@ -18,7 +18,7 @@ class OptVolcan extends StatelessWidget {
   {
     //holaaa
     
-    List _empleos=["Chef","Arquitecto","Plomero","Ganadero","Fotografo","Agricultor","Corta Sesped","repostero"];
+    List _empleos=["Chef","Arquitecto","Plomero","Ganadero","Fotografo","Agricultor","Corta césped","repostero"];
         return Scaffold(
           
           appBar: AppBar
@@ -114,14 +114,6 @@ class OptVolcan extends StatelessWidget {
                       crossAxisCount: 2 ,
                       
                       children :<Widget>[
-
-                        InkWell(
-                          child: Container(
-                              child: cartasBox(circulosS(image: AssetImage ('assets/img/chef.jpg')),_empleos[0],),
-                            ),
-                            onTap: ()=>{{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>Volcanmap()))}},
-                          ),
-
                         InkWell(
                           child: Container(
                               child: cartasBox(circulosS(image: AssetImage ('assets/img/arquitecto.jpg')),_empleos[1]),
@@ -135,6 +127,15 @@ class OptVolcan extends StatelessWidget {
                             ),
                             onTap: ()=>{{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>Volcanmap()))}},
                           ),
+                          
+                        InkWell(
+                          child: Container(
+                              child: cartasBox(circulosS(image: AssetImage ('assets/img/chef.jpg')),_empleos[0],),
+                            ),
+                            onTap: ()=>{{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>Volcanmap()))}},
+                          ),
+
+                        
 
                           InkWell(
                           child: Container(

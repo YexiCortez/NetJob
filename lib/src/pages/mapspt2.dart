@@ -18,7 +18,7 @@ class OpcionesScreen extends StatelessWidget {
   {
     //holaaa
     
-    List _empleos=["Chef","Arquitecto","Plomero","Ganadero","Fotografo","Agricultor","Corta Sesped","repostero"];
+    List _empleos=["Chef","Arquitecto","Plomero","Ganadero","Fotografo","Agricultor","Corta césped","repostero"];
         return Scaffold(
           
           appBar: AppBar
@@ -117,7 +117,7 @@ class OpcionesScreen extends StatelessWidget {
 
                         InkWell(
                           child: Container(
-                              child: cartasBox(circulosS(image: AssetImage ('assets/img/sesped.jpg')),_empleos[0],),
+                              child: cartasBox(circulosS(image: AssetImage ('assets/img/chef.jpg')),_empleos[0],),
                             ),
                             onTap: ()=>{{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>Volcanmap()))}},
                           ),
@@ -145,7 +145,7 @@ class OpcionesScreen extends StatelessWidget {
 
                           InkWell(
                           child: Container(
-                              child: cartasBox(circulosS(image: AssetImage ('assets/img/sesped.jpg')),_empleos[4]),
+                              child: cartasBox(circulosS(image: AssetImage ('assets/img/fotografo.jpg')),_empleos[4]),
                             ),
                             onTap: ()=>{{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>DolegaFoto()))}},
                           ),

@@ -18,7 +18,7 @@ class OpcionesDavid extends StatelessWidget {
   {
     //holaaa
     
-    List _empleos=["Chef","Arquitecto","Plomero","Ganadero","Fotografo","Agricultor","Corta Sesped","repostero"];
+    List _empleos=["Chef","Arquitecto","Plomero","Ganadero","Fotografo","Agricultor","Corta césped","repostero"];
         return Scaffold(
           
           appBar: AppBar
@@ -60,6 +60,26 @@ class OpcionesDavid extends StatelessWidget {
                   children: <Widget>[
                      InkWell(
                     child: Container(
+                        width: 200,
+                        color: Colors.blue[400],
+                        child: const Center(child: Text('Boquete', style: TextStyle(fontSize: 18, color: Colors.white),)),
+                      ),
+                      //Bqtmap
+                      onTap: ()=>{{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>OptBqt()))}},
+                    ),
+
+                    InkWell(
+                      child:Container(
+                        width: 200,
+                        color: Colors.blue[300],
+                        child: const Center(child: Text('Volcan', style: TextStyle(fontSize: 18, color: Colors.white),)),
+                      ),
+                      //Volcanmap
+                      onTap: ()=>{{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>OptVolcan()))}},
+                    ),
+
+                     InkWell(
+                    child: Container(
                       
                       width: 200,
                       color: Colors.blue[600],
@@ -80,25 +100,7 @@ class OpcionesDavid extends StatelessWidget {
                       onTap: ()=>{{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>OpcionesScreen()))}},
                     ),
 
-                    InkWell(
-                    child: Container(
-                        width: 200,
-                        color: Colors.blue[400],
-                        child: const Center(child: Text('Boquete', style: TextStyle(fontSize: 18, color: Colors.white),)),
-                      ),
-                      //Bqtmap
-                      onTap: ()=>{{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>OptBqt()))}},
-                    ),
-
-                    InkWell(
-                      child:Container(
-                        width: 200,
-                        color: Colors.blue[300],
-                        child: const Center(child: Text('Volcan', style: TextStyle(fontSize: 18, color: Colors.white),)),
-                      ),
-                      //Volcanmap
-                      onTap: ()=>{{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>OptVolcan()))}},
-                    ),
+                   
 
                   ],
                 ),
