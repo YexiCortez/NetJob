@@ -25,6 +25,15 @@ class OpcionesDavid extends StatelessWidget {
           (
             centerTitle: true,
             title: Text("David",style: TextStyle(fontSize: 25),),
+            actions: <Widget>[
+              IconButton(
+                icon: Icon(
+                  Icons.map,
+                  color: Colors.white,
+                ),
+                onPressed: ()=>{{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>Davidmap()))}}
+              )
+            ],
           ),
           body:ListView(
     

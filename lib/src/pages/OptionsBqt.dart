@@ -25,6 +25,15 @@ class OptBqt extends StatelessWidget {
           (
             centerTitle: true,
             title: Text("Boquete",style: TextStyle(fontSize: 25),),
+            actions: <Widget>[
+              IconButton(
+                icon: Icon(
+                  Icons.map,
+                  color: Colors.white,
+                ),
+                onPressed: () =>{{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>Bqtmap()))}}
+              )
+            ],
           ),
           body:ListView(
     

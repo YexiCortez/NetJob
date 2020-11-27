@@ -25,6 +25,15 @@ class OptVolcan extends StatelessWidget {
           (
             centerTitle: true,
             title: Text("Volcan",style: TextStyle(fontSize: 25),),
+            actions: <Widget>[
+              IconButton(
+                icon: Icon(
+                  Icons.map,
+                  color: Colors.white,
+                ),
+                onPressed: () =>{{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>Volcanmap()))}}
+              )
+            ],
           ),
           body:ListView(
     

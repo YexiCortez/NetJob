@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mapbox_gl/mapbox_gl.dart';
+import 'package:proyecto/src/pages/OptionsDavid.dart';
 import 'package:proyecto/src/pages/inicio_usuario.dart';
 import 'package:proyecto/src/pages/mapspt2.dart';
 
@@ -63,7 +64,7 @@ class _FullScreenMapState extends State<Davidmap>
           elevation: 50,
           label: Text('Opciones'),
           icon: Icon(Icons.aspect_ratio),
-          onPressed: ()=>{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>OpcionesScreen()))},
+          onPressed: ()=>{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>OpcionesDavid()))},
           ),
       
       SizedBox( height: 480 ),
