@@ -3,7 +3,7 @@ import 'package:mapbox_gl/mapbox_gl.dart';
 import 'package:proyecto/src/pages/inicio_usuario.dart';
 import 'package:proyecto/src/pages/mapspt2.dart';
 
-class FullScreenMap extends StatefulWidget 
+class DolegaFoto extends StatefulWidget 
 {
 
   @override
@@ -11,7 +11,7 @@ class FullScreenMap extends StatefulWidget
 }
 
 
-class _FullScreenMapState extends State<FullScreenMap> 
+class _FullScreenMapState extends State<DolegaFoto> 
 {
   MapboxMapController mapController;
   String searchQuery = "Search query";
@@ -74,7 +74,7 @@ class _FullScreenMapState extends State<FullScreenMap>
         child: Icon( Icons.zoom_in ),
         onPressed: () {
           mapController.animateCamera( CameraUpdate.zoomIn() );
-         /* mapController.addSymbol(SymbolOptions(
+          mapController.addSymbol(SymbolOptions(
                 geometry: LatLng(8.564914, -82.411987),
                 iconSize: 2,
                 iconImage: 'attraction-15' ,
@@ -85,7 +85,7 @@ class _FullScreenMapState extends State<FullScreenMap>
                 iconSize: 2,
                 iconImage: 'attraction-15' ,
                 textField: "Fotografo",
-                textOffset: Offset(0,1) ));*/
+                textOffset: Offset(0,1) ));
         }
     
       ),

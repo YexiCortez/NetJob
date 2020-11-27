@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 
 import 'package:image_ink_well/image_ink_well.dart';
 import 'package:proyecto/src/pages/Bqtmap.dart';
-import 'package:proyecto/src/pages/OptionsBqt.dart';
 import 'package:proyecto/src/pages/OptionsDavid.dart';
 import 'package:proyecto/src/pages/OptionsVolcan.dart';
 import 'package:proyecto/src/pages/davidmap.dart';
 import 'package:proyecto/src/pages/dolegafoto.dart';
+import 'package:proyecto/src/pages/mapspt2.dart';
 import 'package:proyecto/src/pages/views/fullscreenmap.dart';
 import 'package:proyecto/src/pages/volcanmap.dart';
 
-class OpcionesScreen extends StatelessWidget {
-  const OpcionesScreen({Key key}) : super(key: key);
+class OptBqt extends StatelessWidget {
+  const OptBqt({Key key}) : super(key: key);
  
   @override
   Widget build(BuildContext context) 
@@ -24,7 +24,7 @@ class OpcionesScreen extends StatelessWidget {
           appBar: AppBar
           (
             centerTitle: true,
-            title: Text("Dolega",style: TextStyle(fontSize: 25),),
+            title: Text("Boquete",style: TextStyle(fontSize: 25),),
           ),
           body:ListView(
     
@@ -91,6 +91,7 @@ class OpcionesScreen extends StatelessWidget {
                       onTap: ()=>{{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>OptVolcan()))}},
                     ),
 
+
                   ],
                 ),
               ),
@@ -108,7 +109,7 @@ class OpcionesScreen extends StatelessWidget {
 
                         InkWell(
                           child: Container(
-                              child: cartasBox(circulosS(image: AssetImage ('assets/img/sesped.jpg')),_empleos[0],),
+                              child: cartasBox(circulosS(image: AssetImage ('assets/img/chef.jpg')),_empleos[0],),
                             ),
                             onTap: ()=>{{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>Volcanmap()))}},
                           ),
@@ -136,7 +137,7 @@ class OpcionesScreen extends StatelessWidget {
 
                           InkWell(
                           child: Container(
-                              child: cartasBox(circulosS(image: AssetImage ('assets/img/sesped.jpg')),_empleos[4]),
+                              child: cartasBox(circulosS(image: AssetImage ('assets/img/fotografo.jpg')),_empleos[4]),
                             ),
                             onTap: ()=>{{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>DolegaFoto()))}},
                           ),
