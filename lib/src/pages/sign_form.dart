@@ -368,7 +368,7 @@ _seleccionarFoto() async{
   setState(() {});
 }
 
-Widget _mostrarFoto() {
+Future<Widget> _mostrarFoto() async {
   print('************************************');
   if (foto!=null) {
     return CircleAvatar(
@@ -377,6 +377,7 @@ Widget _mostrarFoto() {
               backgroundColor:Colors.transparent ,
             );
   } else {
+    negocio.fotoUrl = await negocioProvider.subirImagen(foto);
     return CircleAvatar(
         
         backgroundImage: 
@@ -387,6 +388,7 @@ Widget _mostrarFoto() {
        // fit: BoxFit.cover,
 
       );
+      
   }
       
   }
@@ -486,31 +488,15 @@ void _mostrarAlert2(BuildContext context){
     print('************************************envio');
     //print(negocio.nombreNegocio);
     //print(formKey.currentState.validate());
-    if ( !formKey.currentState.validate() ) return;
+    //if ( foto != null ) {
+    //  negocio.fotoUrl = await negocioProvider.subirImagen(foto);
+    //}
+    if ( !formKey.currentState.validate()) return;
 
     formKey.currentState.save();
     
     negocioProvider.crearNegocio(negocio);
 
-    //setState(() {_guardando = true; });
-
-    if ( foto != null ) {
-      negocio.fotoUrl = await negocioProvider.subirImagen(foto);
-    }
-    //_mostrarAlert2(context);
-
-  /*
-
-    if ( persona.id == null ) {
-      datosProvider.crearPersona(persona);
-    } else {
-      datosProvider.editarProducto(persona);
-    }
-
-
-    // setState(() {_guardando = false; });
-    mostrarSnackbar('Registro guardado');
-*/
     Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=>InicioProveedor()));
 
   }
