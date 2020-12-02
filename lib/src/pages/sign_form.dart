@@ -36,7 +36,7 @@ class _InputPageState extends State<InputPage> {
 
 
   List<String> _opciones = ['Seleccionar Categoría de desempeño','Ayuda con Mudanza','Compras','Entregas a domicilio','Jardinería','Limpieza','Levantamiento de Objetos pesados','Reparaciones'];
-  List<String> _opciones2 = ['Seleccionar Nivel de Experiencia','Menos de 1 año','2 - 3 años','Más de 4 años',];
+  List<String> _opciones2 = ['Seleccionar Nivel de Experiencia','Menos de 1 año','1 - 2 años','Más de 3 años',];
 
   TextEditingController controlMail = new TextEditingController();
   TextEditingController controlHabil= new TextEditingController();
