@@ -68,7 +68,7 @@ class _InputPageState extends State<InputPage> {
               children: <Widget>[
           Container(
             padding: EdgeInsets.all(3.0),
-            child:  _mostrarFoto()
+            child: _mostrarFoto()
           ),
          // _crearFotoPerfil(),
          Row(
@@ -371,13 +371,14 @@ _seleccionarFoto() async{
 Future<Widget> _mostrarFoto() async {
   print('************************************');
   if (foto!=null) {
+      negocio.fotoUrl = await negocioProvider.subirImagen(foto);
     return CircleAvatar(
               backgroundImage: FileImage(foto),
               radius: 75.0,
               backgroundColor:Colors.transparent ,
             );
   } else {
-    negocio.fotoUrl = await negocioProvider.subirImagen(foto);
+   
     return CircleAvatar(
         
         backgroundImage: 
