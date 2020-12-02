@@ -20,7 +20,7 @@ class _VistaProveedoresState extends State<VistaProveedores> {
          backgroundColor: Colors.lightBlueAccent,
        ),
        body: _crearListado(),
-       floatingActionButton: _crearBoton(context),
+       //floatingActionButton: _crearBoton(context),
     );
   }
   final negocioProvider = NegocioProvider();
@@ -71,7 +71,7 @@ class _VistaProveedoresState extends State<VistaProveedores> {
               ),
             
             ListTile(
-              title: Text('${ negocio.nombreNegocio } - ${ negocio.telefono }'),
+              title: Text('${ negocio.nombreNegocio } - Teléfono: ${ negocio.telefono }'),
               //subtitle: Text( producto.id ),
               onTap: () => Navigator.pushNamed(context, 'negocios', arguments: negocio ),
             ),
