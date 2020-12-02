@@ -86,7 +86,7 @@ class ContratosProfile extends StatelessWidget {
                             overflow: Overflow.visible,
                             children:<Widget>[
                               personaInf(),
-                              imagnePerfil(),
+                              imagnePerfil('assets/img/snow.jpg'),
                             ]
                         )
                       );
@@ -169,7 +169,7 @@ class ContratosProfile extends StatelessWidget {
                             overflow: Overflow.visible,
                             children:<Widget>[
                               personaInf(),
-                              imagnePerfil(),
+                              imagnePerfil('assets/img/yoda.jpg'),
                             ]
                         )
                       );
@@ -262,7 +262,7 @@ class ContratosProfile extends StatelessWidget {
                             overflow: Overflow.visible,
                             children:<Widget>[
                               personaInf(),
-                              imagnePerfil(),
+                              imagnePerfil('assets/img/ellen.jpg'),
                             ]
                         )
                       );
@@ -345,7 +345,7 @@ class ContratosProfile extends StatelessWidget {
                             overflow: Overflow.visible,
                             children:<Widget>[
                               personaInf(),
-                              imagnePerfil(),
+                              imagnePerfil('assets/img/lexy.jpg'),
                             ]
                         )
                       );
@@ -428,7 +428,7 @@ class ContratosProfile extends StatelessWidget {
                             overflow: Overflow.visible,
                             children:<Widget>[
                               personaInf(),
-                              imagnePerfil(),
+                              imagnePerfil('assets/img/rob.jpg'),
                             ]
                         )
                       );
@@ -484,7 +484,7 @@ Widget personaInf()
         );
 }
 
-Widget imagnePerfil()
+Widget imagnePerfil(String s)
 {
   return Positioned(
           top: -50,
@@ -493,7 +493,7 @@ Widget imagnePerfil()
               backgroundColor: Color (0xFF81D4FA), 
               child: CircleAvatar ( 
                 radius: 50, 
-                backgroundImage: AssetImage ('assets/img/snow.jpg'), 
+                backgroundImage: AssetImage (s), 
               ), 
             ));
 }
