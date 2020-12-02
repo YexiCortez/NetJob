@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:proyecto/src/models/negocio_model.dart';
+import 'package:proyecto/src/pages/P_inicio.dart';
+import 'package:proyecto/src/pages/categorias.dart';
+import 'package:proyecto/src/pages/proveedores_vista.dart';
 import 'dart:io';
 
 import 'package:proyecto/src/providers/providers.dart';
@@ -36,16 +39,71 @@ class _NegocioPageState extends State<NegocioPage> {
           FadeInImage(placeholder: AssetImage('assets/img/jar-loading.gif'), image:NetworkImage(negocio.fotoUrl),height: 200,width: 200,fit: BoxFit.cover,),
         
           _crearT(negocio.nombreNegocio),
-          _crearCont('Habilidades: ${negocio.habilidades}'),
-          _crearCont('Idiomas: ${negocio.idiomas}'),
-          _crearCont('Experiencia: ${negocio.exp}'),
-          _crearCont('Categoría: ${negocio.categoria}'),
-          _crearCont('Ciudad: ${negocio.ciudad}'),
-          _crearCont('Descripción: ${negocio.descripcion}'),
-          _crearCont('Teléfono: ${negocio.telefono}'),
-          _crearCont('E-Mail: ${negocio.email}'),
+          ListTile(
+            leading: Icon(Icons.check_box, color: Colors.black,),
+            title: Text('Habilidades: ${negocio.habilidades}'),
+            onTap: ()=> {},
+          ),
+          ListTile(
+            leading: Icon(Icons.translate, color: Colors.black,),
+            title: Text('Idiomas: ${negocio.idiomas}'),
+            onTap: ()=> {},
+          ),
+          ListTile(
+            leading: Icon(Icons.bar_chart, color: Colors.black,),
+            title: Text('Experiencia: ${negocio.exp}'),
+            onTap: ()=> {},
+          ),
+         ListTile(
+            leading: Icon(Icons.category, color: Colors.black,),
+            title: Text('Categoría: ${negocio.categoria}'),
+            onTap: ()=> {},
+          ),
+          ListTile(
+            leading: Icon(Icons.location_city, color: Colors.black,),
+            title: Text('Ciudad: ${negocio.ciudad}'),
+            onTap: ()=> {},
+          ),
+          ListTile(
+            leading: Icon(Icons.text_snippet, color: Colors.black,),
+            title: Text('Descripción: ${negocio.descripcion}'),
+            onTap: ()=> {},
+          ),
+          ListTile(
+            leading: Icon(Icons.phone,color: Colors.black,),
+            title: Text('Teléfono: ${negocio.telefono}'),
+            onTap: ()=> {},
+          ),
+          ListTile(
+            leading: Icon(Icons.mail, color: Colors.black,),
+            title: Text('E-Mail: ${negocio.email}'),
+            onTap: ()=> {},
+          ),
           
+          Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>
+                [
+                  Padding(padding: EdgeInsets.symmetric(vertical: 30),),
+                  FlatButton(
+                    padding:EdgeInsets.symmetric(horizontal: 40.0,vertical: 15),
+                    shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(25)),
+                    color: Colors.lightBlueAccent,
+                    onPressed: ()=>{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>VistaProveedores()))},
+                    child: Text("CONTRATAR"),
+                  ),
 
+                  SizedBox(width:5.0,),
+                  //cambiop
+                  RaisedButton(
+                    padding:EdgeInsets.symmetric(horizontal: 40.0,vertical: 15),
+                    shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(25)),
+                    color: Colors.black,
+                    onPressed: ()=>{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>InicioScreen()))},
+                    textColor: Colors.white,
+                    child: Text("TRABAJAR"))
+                ],
+              ),
 
 
         ],
