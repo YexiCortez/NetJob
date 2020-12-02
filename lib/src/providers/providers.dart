@@ -189,7 +189,8 @@ class UsuarioProvider{
 }
 
 class NegocioProvider{
-
+  final String _url= 'https://netjobdb.firebaseio.com';
+  
   final String _fireBaseToken = 'AIzaSyDX1BWv70W8g0PDHS72EH1Z2iFujanC1qg';
   final _prefs= new PreferenciasUsuario();
 
@@ -278,6 +279,31 @@ class NegocioProvider{
     return respData['secure_url'];
 
 
+
+  }
+  Future<List<NegocioModel>> cargarProductos() async {
+
+    final url  = '$_url/negocio.json'/*?auth=${ _prefs.token }'*/;
+    final resp = await http.get(url);
+
+    final Map<String, dynamic> decodedData = json.decode(resp.body);
+    final List<NegocioModel> productos = new List();
+
+
+    if ( decodedData == null ) return [];
+
+    decodedData.forEach( ( id, prod ){
+
+      final prodTemp = NegocioModel.fromJson(prod);
+      prodTemp.id = id;
+
+      productos.add( prodTemp );
+
+    });
+
+    print( productos[0].id );
+
+    return productos;
 
   }
 

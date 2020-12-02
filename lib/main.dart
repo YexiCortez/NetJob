@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:proyecto/src/bloc/provider.dart';
+import 'package:proyecto/src/pages/categorias.dart';
 import 'package:proyecto/src/pages/inicio_usuario.dart';
+import 'package:proyecto/src/pages/proveedores_vista.dart';
 import 'package:proyecto/src/pages/provider_home.dart';
 import 'package:proyecto/src/pages/pruebalog.dart';
 import 'package:proyecto/src/pages/transicion_inicio.dart';
@@ -14,6 +16,7 @@ void main () async
     final prefs = new PreferenciasUsuario();
     await prefs.initPrefs();
   runApp(MyApp());
+
   
 }
 
@@ -40,6 +43,8 @@ class MyApp extends StatelessWidget
         'escoger':(BuildContext context)=>HomePage(),
         'proveedor':(BuildContext context)=>InicioProveedor(),
         'cliente':(BuildContext context)=>InicioUsuario(),
+        'negocios':(BuildContext context)=>VistaProveedores(),
+        'categorias':(BuildContext context)=>CatPage(),
         
       },
       //home: HomeScreen(),

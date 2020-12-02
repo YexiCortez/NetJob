@@ -1,9 +1,15 @@
+//import 'dart:js';
+
 import 'package:flutter/material.dart';
 import 'package:proyecto/src/bloc/login_bloc.dart';
+import 'package:proyecto/src/bloc/provider.dart';
+import 'package:proyecto/src/pages/proveedores_vista.dart';
 
 class CatPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final bloc = Provider.of(context);
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Categorías',textAlign: TextAlign.right,),
@@ -13,22 +19,22 @@ class CatPage extends StatelessWidget {
       body: ListView(
           children: [
           //Text('Mover Objetos Pesados', textScaleFactor: 1.3,),
-          _crearCat('https://res.cloudinary.com/dfwt7u6gx/image/upload/v1605568129/s3prr68r73fvkicqvf11.jpg','Mover Objetos Pesados' ),
+          _crearCat('https://res.cloudinary.com/dfwt7u6gx/image/upload/v1605568129/s3prr68r73fvkicqvf11.jpg','Mover Objetos Pesados',context ),
           //Divider(),
           //Text('Jardinería', textScaleFactor: 1.3,),
-          _crearCat('https://res.cloudinary.com/dfwt7u6gx/image/upload/v1605569322/nmk4zg7gtn8ops6czab4.jpg','Jardinería' ),
+          _crearCat('https://res.cloudinary.com/dfwt7u6gx/image/upload/v1605569322/nmk4zg7gtn8ops6czab4.jpg','Jardinería' ,context),
           //Divider(),
          //Text('Reparaciones', textScaleFactor: 1.3,),
-          _crearCat('https://res.cloudinary.com/dfwt7u6gx/image/upload/v1605570560/qgzhq4gtyvrcuz5lzdpy.jpg','Reparaciones' ),
+          _crearCat('https://res.cloudinary.com/dfwt7u6gx/image/upload/v1605570560/qgzhq4gtyvrcuz5lzdpy.jpg','Reparaciones' ,context),
           //Divider(),
           //Text('Compras', textScaleFactor: 1.3,),
-          _crearCat('https://res.cloudinary.com/dfwt7u6gx/image/upload/v1605570918/xm5wyicu6kjtcweo12ex.jpg','Compras' ),
+          _crearCat('https://res.cloudinary.com/dfwt7u6gx/image/upload/v1605570918/xm5wyicu6kjtcweo12ex.jpg','Compras' ,context),
           //Divider(),
           //Text('Limpieza', textScaleFactor: 1.3,),
-          _crearCat('https://res.cloudinary.com/dfwt7u6gx/image/upload/v1605570659/lvt7gdfkhqoxxsfigbww.png', 'Limpieza'),
+          _crearCat('https://res.cloudinary.com/dfwt7u6gx/image/upload/v1605570659/lvt7gdfkhqoxxsfigbww.png', 'Limpieza',context),
           //Divider(),
           //Text('Entregas a domicilio', textScaleFactor: 1.3,),
-          _crearCat('https://res.cloudinary.com/dfwt7u6gx/image/upload/v1605570817/t0ykoqehtyjclweskhbv.jpg','Entregas a domicilio' ),
+          _crearCat('https://res.cloudinary.com/dfwt7u6gx/image/upload/v1605570817/t0ykoqehtyjclweskhbv.jpg','Entregas a domicilio',context ),
           //Divider(),
 
           ],
@@ -44,7 +50,7 @@ class CatPage extends StatelessWidget {
     );
   }
 
-  Widget _crearCat(String img, String titulo ){
+  Widget _crearCat(String img, String titulo,BuildContext context ){
     return  GestureDetector(
      //onTap: ,
       child:Card(
@@ -59,7 +65,7 @@ class CatPage extends StatelessWidget {
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             
             //subtitle: Text( producto.id ),
-            //onTap: () => Navigator.pushNamed(context, 'producto', arguments: producto ),
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder:(context)=>VistaProveedores())),
             ),
 
           ],
