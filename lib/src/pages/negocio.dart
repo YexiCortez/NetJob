@@ -90,7 +90,7 @@ class _NegocioPageState extends State<NegocioPage> {
                     shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(25)),
                     color: Colors.lightBlueAccent,
                     onPressed: ()=>{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>VistaProveedores()))},
-                    child: Text("CONTRATAR"),
+                    child: Text("Volver"),
                   ),
 
                   SizedBox(width:5.0,),
@@ -99,9 +99,9 @@ class _NegocioPageState extends State<NegocioPage> {
                     padding:EdgeInsets.symmetric(horizontal: 40.0,vertical: 15),
                     shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(25)),
                     color: Colors.black,
-                    onPressed: ()=>{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>InicioScreen()))},
+                    onPressed: ()=>{},
                     textColor: Colors.white,
-                    child: Text("TRABAJAR"))
+                    child: Text("Contactar"))
                 ],
               ),
 

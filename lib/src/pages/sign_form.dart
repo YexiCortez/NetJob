@@ -68,7 +68,7 @@ class _InputPageState extends State<InputPage> {
               children: <Widget>[
           Container(
             padding: EdgeInsets.all(3.0),
-            //child: _mostrarFoto()
+            child: _mostrarFoto()
           ),
          // _crearFotoPerfil(),
          Row(
