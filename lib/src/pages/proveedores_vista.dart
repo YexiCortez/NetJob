@@ -73,7 +73,7 @@ class _VistaProveedoresState extends State<VistaProveedores> {
             ListTile(
               title: Text('${ negocio.nombreNegocio } - Teléfono: ${ negocio.telefono }'),
               //subtitle: Text( producto.id ),
-              onTap: () => Navigator.pushNamed(context, 'negocios', arguments: negocio ),
+              onTap: () => Navigator.pushNamed(context, 'negocio', arguments: negocio ),
             ),
 
           ],

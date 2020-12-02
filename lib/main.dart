@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:proyecto/src/bloc/provider.dart';
 import 'package:proyecto/src/pages/categorias.dart';
 import 'package:proyecto/src/pages/inicio_usuario.dart';
+import 'package:proyecto/src/pages/negocio.dart';
 import 'package:proyecto/src/pages/proveedores_vista.dart';
 import 'package:proyecto/src/pages/provider_home.dart';
 import 'package:proyecto/src/pages/pruebalog.dart';
@@ -45,6 +46,7 @@ class MyApp extends StatelessWidget
         'cliente':(BuildContext context)=>InicioUsuario(),
         'negocios':(BuildContext context)=>VistaProveedores(),
         'categorias':(BuildContext context)=>CatPage(),
+        'negocio':(BuildContext context)=>NegocioPage(),
         
       },
       //home: HomeScreen(),
