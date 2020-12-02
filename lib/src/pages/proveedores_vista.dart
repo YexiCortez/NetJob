@@ -19,7 +19,8 @@ class _VistaProveedoresState extends State<VistaProveedores> {
        appBar: AppBar(
          backgroundColor: Colors.lightBlueAccent,
        ),
-       body: _crearListado()
+       body: _crearListado(),
+       floatingActionButton: _crearBoton(context),
     );
   }
   final negocioProvider = NegocioProvider();
@@ -84,6 +85,12 @@ class _VistaProveedoresState extends State<VistaProveedores> {
     
 
   }
-
+   _crearBoton(BuildContext context) {
+    return FloatingActionButton(
+      child: Icon( Icons.add ),
+      backgroundColor: Colors.deepPurple,
+      onPressed: ()=> Navigator.pushNamed(context, 'producto'),
+    );
+  }
 
 }
