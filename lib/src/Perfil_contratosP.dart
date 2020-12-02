@@ -20,7 +20,7 @@ class ContratosProfile extends StatelessWidget {
          Container(
            decoration: BoxDecoration(
              border: Border(
-                bottom: BorderSide( //                   <--- left side
+                bottom: BorderSide( 
                   color: Colors.blue,
                   width: 3.0,
                 ),
@@ -90,6 +90,8 @@ class ContratosProfile extends StatelessWidget {
                             ]
                         )
                       );
+                      //act
+
                     }
                     );
                     },)
