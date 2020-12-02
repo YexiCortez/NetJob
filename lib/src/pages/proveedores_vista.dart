@@ -61,10 +61,10 @@ class _VistaProveedoresState extends State<VistaProveedores> {
           children: <Widget>[
 
             ( negocio.fotoUrl == null ) 
-              ? Image(image: AssetImage('assets/no-image.png'))
+              ? Image(image: AssetImage('assets/img/no-pic.png'))
               : FadeInImage(
                 image: NetworkImage( negocio.fotoUrl ),
-                placeholder: AssetImage('assets/jar-loading.gif'),
+                placeholder: AssetImage('assets/img/jar-loading.gif'),
                 height: 300.0,
                 width: double.infinity,
                 fit: BoxFit.cover,
