@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:proyecto/src/Perfil_contratosP.dart';
 import 'package:proyecto/src/models/negocio_model.dart';
 import 'package:proyecto/src/pages/P_inicio.dart';
 import 'package:proyecto/src/pages/categorias.dart';
 import 'package:proyecto/src/pages/proveedores_vista.dart';
+import 'package:proyecto/src/pages/views/rateScreen.dart';
 import 'dart:io';
 
 import 'package:proyecto/src/providers/providers.dart';
@@ -79,7 +81,27 @@ class _NegocioPageState extends State<NegocioPage> {
             title: Text('E-mail: ${negocio.email}'),
             onTap: ()=> {},
           ),
-          
+          Column(
+            children: [
+            FlatButton(
+                    
+                    padding:EdgeInsets.symmetric(horizontal: 100.0,vertical: 15),
+                    shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(25)),
+                    color: Colors.red[200],
+                    onPressed: ()=>{Navigator.of(context).pushReplacement(MaterialPageRoute(builder:(context)=>RateScreen()))},
+                    child: Text("Calificar"),
+                  ),
+
+                  SizedBox(width:5.0,),
+                  //cambiop
+                  FlatButton(
+                    padding:EdgeInsets.symmetric(horizontal: 88.0,vertical: 15),
+                    shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(25)),
+                    color: Colors.lightGreen[300],
+                    onPressed: ()=>{Navigator.of(context).pushReplacement(MaterialPageRoute(builder:(context)=>ContratosProfile()))},
+                    textColor: Colors.white,
+                    child: Text("Comentarios"))]
+          ),
           Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>
