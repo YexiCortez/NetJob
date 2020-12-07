@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:proyecto/src/Perfil_contratosP.dart';
 import 'package:proyecto/src/pages/P_maps.dart';
 import 'package:proyecto/src/pages/abousUs_page.dart';
+import 'package:proyecto/src/pages/categorias.dart';
 import 'package:proyecto/src/pages/inicio_usuario.dart';
 import 'package:proyecto/src/pages/pruebalog.dart';
+import 'package:proyecto/src/pages/sign_form.dart';
 import 'package:proyecto/src/pages/views/fullscreenmap.dart';
 import 'package:proyecto/src/pages/views/rateScreen.dart';
 
@@ -38,7 +40,7 @@ class CrearMenu extends StatelessWidget {
         ListTile(
           leading: Icon(Icons.category_outlined, color: Colors.black,),
           title: Text('Categorías'),
-          onTap: ()=> Navigator.of(context).push(MaterialPageRoute(builder:(context)=>RateScreen())),
+          onTap: ()=> Navigator.of(context).push(MaterialPageRoute(builder:(context)=>CatPage())),
         ),
 
         ListTile(
@@ -58,7 +60,7 @@ class CrearMenu extends StatelessWidget {
         ListTile(
           leading: Icon(Icons.work_outline, color: Colors.black,),
           title: Text('Quiero ser Proveedor'),
-          onTap: ()=>Navigator.of(context).push(MaterialPageRoute(builder:(context)=>ContratosProfile())),
+          onTap: ()=>Navigator.of(context).push(MaterialPageRoute(builder:(context)=>InputPage())),
         ),
         ListTile(
           leading: Icon(Icons.logout, color: Colors.black,),
