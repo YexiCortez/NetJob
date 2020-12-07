@@ -98,6 +98,7 @@ class _FullScreenMapState extends State<DolegaFoto>
         child: Icon( Icons.zoom_out),
         onPressed: () {
           mapController.animateCamera( CameraUpdate.zoomOut() );
+          Navigator.of(context).push(MaterialPageRoute(builder:(context)=>InicioUsuario()));
         }
       ),
 

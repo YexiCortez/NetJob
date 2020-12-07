@@ -66,7 +66,7 @@ class OptBqt extends StatelessWidget {
                         child: const Center(child: Text('Boquete', style: TextStyle(fontSize: 18, color: Colors.white),)),
                       ),
                       //Bqtmap
-                      onTap: ()=>{{Navigator.pushReplacement(context, MaterialPageRoute(builder:(context)=>OptBqt()))}},
+                      onTap: ()=>{{Navigator.of(context).push( MaterialPageRoute(builder:(context)=>OptBqt()))}},
                     ),
 
                     InkWell(
