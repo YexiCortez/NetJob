@@ -101,7 +101,7 @@ Widget build(BuildContext context) {
             //height: 40.0,
             alignment: Alignment.centerLeft,
             child: TextField(
-              controller: TextEditingController(text: snapshot.data),
+              //controller: TextEditingController(text: snapshot.data),
               keyboardType: TextInputType.emailAddress,
               style: TextStyle(
                 color:Colors.white,
