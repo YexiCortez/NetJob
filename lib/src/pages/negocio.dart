@@ -76,7 +76,7 @@ class _NegocioPageState extends State<NegocioPage> {
           ),
           ListTile(
             leading: Icon(Icons.mail, color: Colors.black,),
-            title: Text('E-Mail: ${negocio.email}'),
+            title: Text('E-mail: ${negocio.email}'),
             onTap: ()=> {},
           ),
           
@@ -89,7 +89,7 @@ class _NegocioPageState extends State<NegocioPage> {
                     padding:EdgeInsets.symmetric(horizontal: 40.0,vertical: 15),
                     shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(25)),
                     color: Colors.lightBlueAccent,
-                    onPressed: ()=>{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>VistaProveedores()))},
+                    onPressed: ()=>{Navigator.of(context).pushReplacement(MaterialPageRoute(builder:(context)=>VistaProveedores()))},
                     child: Text("Volver"),
                   ),
 

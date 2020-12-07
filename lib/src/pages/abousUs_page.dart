@@ -109,7 +109,7 @@ Widget _buttomBack(BuildContext context){
       padding:EdgeInsets.symmetric(horizontal: 75.0),
       shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(25)),
       color: Colors.lightBlueAccent,
-      onPressed: ()=>{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>InicioUsuario()))},
+      onPressed: ()=>{Navigator.of(context).pushReplacement(MaterialPageRoute(builder:(context)=>InicioUsuario()))},
       child: Text('Volver'),
       splashColor: Colors.white,
       

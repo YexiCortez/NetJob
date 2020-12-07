@@ -68,6 +68,7 @@ class _InputPageState extends State<InputPage> {
               children: <Widget>[
           Container(
             padding: EdgeInsets.all(3.0),
+            //
             child: _mostrarFoto()
           ),
          // _crearFotoPerfil(),
@@ -358,6 +359,7 @@ _tomarFoto()async{
   foto = await ImagePicker.pickImage(
     source:ImageSource.camera
   );
+  negocio.fotoUrl = await negocioProvider.subirImagen(foto);
   setState(() {print('************************************');});
 }
 
@@ -365,13 +367,13 @@ _seleccionarFoto() async{
   foto = await ImagePicker.pickImage(
     source:ImageSource.gallery
   );
+  negocio.fotoUrl = await negocioProvider.subirImagen(foto);
   setState(() {});
 }
 
-Future<Widget> _mostrarFoto() async {
+_mostrarFoto() {
   print('************************************');
   if (foto!=null) {
-      negocio.fotoUrl = await negocioProvider.subirImagen(foto);
     return CircleAvatar(
               backgroundImage: FileImage(foto),
               radius: 75.0,
