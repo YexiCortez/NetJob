@@ -66,7 +66,7 @@ class _FullScreenMapState extends State<FullScreenMap>
           onPressed: ()=>{Navigator.of(context).push(MaterialPageRoute(builder:(context)=>OpcionesScreen()))},
           ),
       
-      SizedBox( height: 480 ),
+      SizedBox( height: 460 ),
 
         // ZoomIn
       FloatingActionButton(
@@ -90,7 +90,7 @@ class _FullScreenMapState extends State<FullScreenMap>
     
       ),
         
-      SizedBox( height: 5 ),
+      //SizedBox( height: 5 ),
 
       // ZoomOut
       FloatingActionButton(
@@ -101,7 +101,7 @@ class _FullScreenMapState extends State<FullScreenMap>
         }
       ),
 
-      SizedBox( height: 5 ),
+      //SizedBox( height: 5 ),
 
     ],
   );
